@@ -1,0 +1,85 @@
+{
+  "comment": "Aplicar com: for a in alerts; do aws cloudwatch put-metric-alarm --cli-input-json file://<extraido>; done",
+  "instanceId": "northwind-rds",
+  "snsTopicArn": "arn:aws:sns:us-east-1:000000000000:tf10-alarms-PLACEHOLDER",
+  "alarms": [
+    {
+      "AlarmName": "TF10-CPU-Alto",
+      "AlarmDescription": "CPU > 80% por 5 minutos",
+      "Namespace": "AWS/RDS",
+      "MetricName": "CPUUtilization",
+      "Dimensions": [{ "Name": "DBInstanceIdentifier", "Value": "northwind-rds" }],
+      "Statistic": "Average",
+      "Period": 60,
+      "EvaluationPeriods": 5,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TF10-Storage-Baixo",
+      "AlarmDescription": "Storage livre < 2 GB",
+      "Namespace": "AWS/RDS",
+      "MetricName": "FreeStorageSpace",
+      "Dimensions": [{ "Name": "DBInstanceIdentifier", "Value": "northwind-rds" }],
+      "Statistic": "Average",
+      "Period": 300,
+      "EvaluationPeriods": 2,
+      "Threshold": 2147483648,
+      "ComparisonOperator": "LessThanThreshold",
+      "TreatMissingData": "breaching"
+    },
+    {
+      "AlarmName": "TF10-Conexoes-Altas",
+      "AlarmDescription": "Conexões simultâneas acima de 50 (db.t3.micro suporta ~85)",
+      "Namespace": "AWS/RDS",
+      "MetricName": "DatabaseConnections",
+      "Dimensions": [{ "Name": "DBInstanceIdentifier", "Value": "northwind-rds" }],
+      "Statistic": "Average",
+      "Period": 60,
+      "EvaluationPeriods": 3,
+      "Threshold": 50,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TF10-Latencia-Read",
+      "AlarmDescription": "ReadLatency > 20 ms por 5 minutos",
+      "Namespace": "AWS/RDS",
+      "MetricName": "ReadLatency",
+      "Dimensions": [{ "Name": "DBInstanceIdentifier", "Value": "northwind-rds" }],
+      "Statistic": "Average",
+      "Period": 60,
+      "EvaluationPeriods": 5,
+      "Threshold": 0.02,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "TF10-Memoria-Baixa",
+      "AlarmDescription": "FreeableMemory < 100 MB",
+      "Namespace": "AWS/RDS",
+      "MetricName": "FreeableMemory",
+      "Dimensions": [{ "Name": "DBInstanceIdentifier", "Value": "northwind-rds" }],
+      "Statistic": "Average",
+      "Period": 60,
+      "EvaluationPeriods": 5,
+      "Threshold": 104857600,
+      "ComparisonOperator": "LessThanThreshold",
+      "TreatMissingData": "breaching"
+    },
+    {
+      "AlarmName": "TF10-Billing-Alto",
+      "AlarmDescription": "Estimated charges acima de USD 10 (alerta de custo)",
+      "Namespace": "AWS/Billing",
+      "MetricName": "EstimatedCharges",
+      "Dimensions": [{ "Name": "Currency", "Value": "USD" }],
+      "Statistic": "Maximum",
+      "Period": 21600,
+      "EvaluationPeriods": 1,
+      "Threshold": 10,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "TreatMissingData": "notBreaching"
+    }
+  ]
+}

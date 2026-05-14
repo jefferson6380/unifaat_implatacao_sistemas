@@ -1,0 +1,95 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0, "y": 0, "width": 12, "height": 6,
+      "properties": {
+        "title": "CPUUtilization (%)",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Average",
+        "period": 60,
+        "metrics": [
+          ["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", "northwind-rds"]
+        ],
+        "yAxis": { "left": { "min": 0, "max": 100 } }
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12, "y": 0, "width": 12, "height": 6,
+      "properties": {
+        "title": "DatabaseConnections",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Average",
+        "period": 60,
+        "metrics": [
+          ["AWS/RDS", "DatabaseConnections", "DBInstanceIdentifier", "northwind-rds"]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0, "y": 6, "width": 12, "height": 6,
+      "properties": {
+        "title": "FreeStorageSpace (GB)",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Average",
+        "period": 300,
+        "metrics": [
+          [ { "expression": "m1/1024/1024/1024", "label": "FreeStorageSpace GB", "id": "e1" } ],
+          ["AWS/RDS", "FreeStorageSpace", "DBInstanceIdentifier", "northwind-rds", { "id": "m1", "visible": false }]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12, "y": 6, "width": 12, "height": 6,
+      "properties": {
+        "title": "ReadIOPS / WriteIOPS",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Average",
+        "period": 60,
+        "metrics": [
+          ["AWS/RDS", "ReadIOPS", "DBInstanceIdentifier", "northwind-rds"],
+          [".", "WriteIOPS", ".", "."]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0, "y": 12, "width": 12, "height": 6,
+      "properties": {
+        "title": "ReadLatency / WriteLatency (ms)",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Average",
+        "period": 60,
+        "metrics": [
+          [ { "expression": "m1*1000", "label": "ReadLatency ms", "id": "r1" } ],
+          [ { "expression": "m2*1000", "label": "WriteLatency ms", "id": "w1" } ],
+          ["AWS/RDS", "ReadLatency", "DBInstanceIdentifier", "northwind-rds", { "id": "m1", "visible": false }],
+          [".", "WriteLatency", ".", ".", { "id": "m2", "visible": false }]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12, "y": 12, "width": 12, "height": 6,
+      "properties": {
+        "title": "FreeableMemory (MB)",
+        "view": "timeSeries",
+        "region": "us-east-1",
+        "stat": "Average",
+        "period": 60,
+        "metrics": [
+          [ { "expression": "m1/1024/1024", "label": "FreeableMemory MB", "id": "e1" } ],
+          ["AWS/RDS", "FreeableMemory", "DBInstanceIdentifier", "northwind-rds", { "id": "m1", "visible": false }]
+        ]
+      }
+    }
+  ]
+}
