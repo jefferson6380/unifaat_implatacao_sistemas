@@ -1,0 +1,79 @@
+{
+  "region": "us-east-1",
+  "dbInstanceIdentifier": "tf10-rds-6324064",
+  "snsTopicArn": "arn:aws:sns:us-east-1:506609161223:tf10-rds-alerts",
+  "billingAlert": {
+    "enabled": true,
+    "monthlyBudgetLimitUsd": 10,
+    "emails": [
+      "seu-email@exemplo.com"
+    ]
+  },
+  "alarms": [
+    {
+      "alarmName": "tf10-rds-cpu-high",
+      "alarmDescription": "CPU media acima de 80% por 10 minutos",
+      "namespace": "AWS/RDS",
+      "metricName": "CPUUtilization",
+      "comparisonOperator": "GreaterThanThreshold",
+      "threshold": 80,
+      "period": 300,
+      "evaluationPeriods": 2,
+      "statistic": "Average",
+      "treatMissingData": "notBreaching"
+    },
+    {
+      "alarmName": "tf10-rds-connections-high",
+      "alarmDescription": "Conexoes acima de 85 por 10 minutos",
+      "namespace": "AWS/RDS",
+      "metricName": "DatabaseConnections",
+      "comparisonOperator": "GreaterThanThreshold",
+      "threshold": 85,
+      "period": 300,
+      "evaluationPeriods": 2,
+      "statistic": "Average",
+      "treatMissingData": "notBreaching"
+    },
+    {
+      "alarmName": "tf10-rds-free-storage-low",
+      "alarmDescription": "Espaco livre abaixo de 2 GB",
+      "namespace": "AWS/RDS",
+      "metricName": "FreeStorageSpace",
+      "comparisonOperator": "LessThanThreshold",
+      "threshold": 2147483648,
+      "period": 300,
+      "evaluationPeriods": 2,
+      "statistic": "Average",
+      "treatMissingData": "breaching"
+    },
+    {
+      "alarmName": "tf10-rds-read-latency-high",
+      "alarmDescription": "Read latency acima de 30 ms",
+      "namespace": "AWS/RDS",
+      "metricName": "ReadLatency",
+      "comparisonOperator": "GreaterThanThreshold",
+      "threshold": 0.03,
+      "period": 60,
+      "evaluationPeriods": 5,
+      "statistic": "Average",
+      "treatMissingData": "notBreaching"
+    },
+    {
+      "alarmName": "tf10-rds-write-latency-high",
+      "alarmDescription": "Write latency acima de 30 ms",
+      "namespace": "AWS/RDS",
+      "metricName": "WriteLatency",
+      "comparisonOperator": "GreaterThanThreshold",
+      "threshold": 0.03,
+      "period": 60,
+      "evaluationPeriods": 5,
+      "statistic": "Average",
+      "treatMissingData": "notBreaching"
+    }
+  ],
+  "notes": [
+    "Crie um SNS Topic e substitua snsTopicArn antes de aplicar.",
+    "Use aws cloudwatch put-metric-alarm para cada alarme.",
+    "Vincule todos os alarmes ao mesmo SNS Topic para centralizar notificacoes."
+  ]
+}

@@ -1,0 +1,6 @@
+# Local secrets
+.env
+
+# Runtime/generated files
+artifacts/
+script.sql
