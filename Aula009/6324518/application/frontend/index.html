@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio Pessoal | AWS Cloud</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; }
+        .header { background: #232f3e; color: white; padding: 2rem; text-align: center; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .card { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tech-tag { background: #ff9900; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+        .health-status { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cloud Systems Portfolio</h1>
+        <p>Infraestrutura Segura em AWS EC2</p>
+    </div>
+    <div class="container">
+        <section class="card">
+            <h2>Habilidades Técnicas</h2>
+            <p>Linux (Ubuntu), Docker, Nginx, AWS CLI e Desenvolvimento de Sistemas.</p>
+        </section>
+
+        <section class="card">
+            <h2>Meus Projetos (via API)</h2>
+            <div id="projects-list">Carregando projetos...</div>
+        </section>
+
+        <section class="card">
+            <h3>Status da Infraestrutura</h3>
+            <p>API Health: <span id="api-status">Verificando...</span></p>
+        </div>
+    </div>
+
+    <script>
+        async function loadData() {
+            try {
+                const health = await fetch('/health');
+                const healthData = await health.json();
+                document.getElementById('api-status').innerText = healthData.status;
+
+                const projects = await fetch('/api/projects');
+                const data = await projects.json();
+                document.getElementById('projects-list').innerHTML = data.map(p => `
+                    <div>
+                        <strong>${p.title}</strong> - <span class="tech-tag">${p.tech}</span>
+                    </div>
+                `).join('<hr>');
+            } catch (e) {
+                document.getElementById('api-status').innerText = 'Offline';
+            }
+        }
+        loadData();
+    </script>
+</body>
+</html>
