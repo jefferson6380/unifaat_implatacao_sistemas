@@ -1,0 +1,26 @@
+services:
+  backend:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: sh -c "npm install && npm start"
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    networks:
+      - portfolio-net
+
+  frontend:
+    image: nginx:alpine
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    networks:
+      - portfolio-net
+
+networks:
+  portfolio-net:
+    driver: bridge
