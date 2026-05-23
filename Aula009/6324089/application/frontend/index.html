@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giovanna Sabino | Portfólio Profissional</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; }
+        .header { background: #232f3e; color: white; padding: 3rem 2rem; text-align: center; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .card { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tech-tag { background: #ff9900; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; }
+        .status-badge { font-weight: bold; padding: 4px 8px; border-radius: 4px; background: #eee; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Giovanna Sabino da Silva</h1>
+        <p>Analista e desenvolvedor
+            estudante
+        </p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Habilidades Técnicas</h2>
+            <p>HTML
+                ,CSS
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Meus Projetos</h2>
+            <div id="projects-list">
+                <p>Carregando projetos da API...</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>Status do Servidor</h3>
+            <p>Conexão com a API: <span id="api-status" class="status-badge">Verificando...</span></p>
+        </section>
+    </main>
+
+    <script>
+        // Função para carregar dados da API local/servidor
+        async function loadPortfolioData() {
+            const statusEl = document.getElementById('api-status');
+            const projectsEl = document.getElementById('projects-list');
+
+            try {
+                // Verifica a saúde da API
+                const healthRes = await fetch('/health');
+                const health = await healthRes.json();
+                statusEl.innerText = health.status || 'Online';
+                statusEl.style.color = 'green';
+
+                // Busca a lista de projetos
+                const projectsRes = await fetch('/api/projects');
+                const data = await projectsRes.json();
+
+                if (data.length > 0) {
+                    projectsEl.innerHTML = data.map(p => `
+                        <div style="margin-bottom: 1rem;">
+                            <strong>${p.title || '[Sem Título]'}</strong><br>
+                            <span class="tech-tag">${p.tech || '[Tecnologia]'}</span>
+                        </div>
+                    `).join('<hr>');
+                } else {
+                    projectsEl.innerHTML = '<p>Nenhum projeto encontrado.</p>';
+                }
+
+            } catch (error) {
+                console.error('Erro ao buscar dados:', error);
+                statusEl.innerText = 'Offline / Erro de Conexão';
+                statusEl.style.color = 'red';
+                projectsEl.innerHTML = '<p>Não foi possível carregar os projetos no momento.</p>';
+            }
+        }
+
+        // Inicia a carga ao abrir a página
+        loadPortfolioData();
+    </script>
+</body>
+</html>
