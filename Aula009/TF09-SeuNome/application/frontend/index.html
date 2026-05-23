@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio Pessoal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .container { max-width: 700px; margin: auto; }
+    h1 { color: #2c3e50; }
+    .projetos, .experiencias { margin-top: 2em; }
+    .health { color: green; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Seu Nome - Portfólio</h1>
+    <p>Bem-vindo ao meu portfólio pessoal hospedado na AWS!</p>
+    <div class="projetos">
+      <h2>Projetos</h2>
+      <ul id="lista-projetos"></ul>
+    </div>
+    <div class="experiencias">
+      <h2>Experiências/Habilidades</h2>
+      <ul>
+        <li>Desenvolvimento Web</li>
+        <li>Cloud AWS</li>
+        <li>DevOps</li>
+      </ul>
+    </div>
+    <div class="health">
+      <h3 id="health-status">Health: ...</h3>
+    </div>
+  </div>
+  <script>
+    fetch('/api/projects')
+      .then(r => r.json())
+      .then(data => {
+        const ul = document.getElementById('lista-projetos');
+        data.forEach(p => {
+          const li = document.createElement('li');
+          li.textContent = p.nome + ' - ' + p.descricao;
+          ul.appendChild(li);
+        });
+      });
+    fetch('/api/health')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('health-status').textContent = 'Health: ' + data.status;
+      });
+  </script>
+</body>
+</html>
