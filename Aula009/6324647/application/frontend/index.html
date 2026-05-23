@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriel Santiago - Portfólio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+    header { background: #1e293b; padding: 2rem; text-align: center; border-bottom: 2px solid #3b82f6; }
+    header h1 { font-size: 2rem; color: #3b82f6; }
+    header p { color: #94a3b8; margin-top: 0.5rem; }
+    nav { display: flex; justify-content: center; gap: 2rem; padding: 1rem; background: #1e293b; }
+    nav a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+    nav a:hover { color: #3b82f6; }
+    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    h2 { color: #3b82f6; margin-bottom: 1rem; border-left: 4px solid #3b82f6; padding-left: 0.75rem; }
+    .card { background: #1e293b; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+    .card h3 { color: #f1f5f9; margin-bottom: 0.5rem; }
+    .card p { color: #94a3b8; font-size: 0.9rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill { background: #3b82f6; color: #fff; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.85rem; }
+    .status { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; }
+    .status.ok { background: #166534; color: #86efac; }
+    #projects-list .card { cursor: pointer; }
+    form { display: flex; flex-direction: column; gap: 0.75rem; }
+    input, textarea { background: #0f172a; border: 1px solid #334155; color: #e2e8f0; padding: 0.5rem; border-radius: 4px; }
+    button { background: #3b82f6; color: #fff; border: none; padding: 0.6rem 1.5rem; border-radius: 4px; cursor: pointer; align-self: flex-start; }
+    button:hover { background: #2563eb; }
+    footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gabriel Santiago de Andrade</h1>
+    <p>Desenvolvedor Full Stack | Análise e Desenvolvimento de Sistemas - UniFAAT</p>
+  </header>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#health">Status</a>
+  </nav>
+
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <div class="card">
+      <p>Estudante de ADS na UniFAAT, apaixonado por cloud computing, infraestrutura AWS e desenvolvimento de software. Este portfólio é hospedado em uma instância EC2 dentro de uma VPC customizada com segurança de rede implementada.</p>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <div class="card">
+      <div class="skills" id="skills-list"></div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="card">
+      <h3>Adicionar Projeto</h3>
+      <form id="project-form">
+        <input type="text" id="proj-name" placeholder="Nome do projeto" required>
+        <input type="text" id="proj-tech" placeholder="Tecnologias (ex: Node.js, AWS)">
+        <textarea id="proj-desc" placeholder="Descrição" rows="3"></textarea>
+        <button type="submit">Adicionar</button>
+      </form>
+    </div>
+    <div id="projects-list"></div>
+  </section>
+
+  <section id="health">
+    <h2>Status da API</h2>
+    <div class="card" id="health-card">
+      <p>Verificando...</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Gabriel Santiago de Andrade | RA: 6324647 | TF09 - UniFAAT</p>
+  </footer>
+
+  <script>
+    const API = '/api';
+
+    async function loadSkills() {
+      const res = await fetch(`${API}/skills`);
+      const data = await res.json();
+      document.getElementById('skills-list').innerHTML =
+        data.map(s => `<span class="skill">${s}</span>`).join('');
+    }
+
+    async function loadProjects() {
+      const res = await fetch(`${API}/projects`);
+      const projects = await res.json();
+      document.getElementById('projects-list').innerHTML = projects.map(p => `
+        <div class="card">
+          <h3>${p.name} <button onclick="deleteProject(${p.id})" style="float:right;background:#dc2626;padding:0.2rem 0.5rem">✕</button></h3>
+          <p><strong>${p.technologies || ''}</strong></p>
+          <p>${p.description || ''}</p>
+        </div>`).join('') || '<div class="card"><p>Nenhum projeto cadastrado.</p></div>';
+    }
+
+    async function deleteProject(id) {
+      await fetch(`${API}/projects/${id}`, { method: 'DELETE' });
+      loadProjects();
+    }
+
+    document.getElementById('project-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await fetch(`${API}/projects`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('proj-name').value,
+          technologies: document.getElementById('proj-tech').value,
+          description: document.getElementById('proj-desc').value
+        })
+      });
+      e.target.reset();
+      loadProjects();
+    });
+
+    async function checkHealth() {
+      try {
+        const res = await fetch(`${API}/health`);
+        const data = await res.json();
+        document.getElementById('health-card').innerHTML = `
+          <p>Status: <span class="status ok">${data.status}</span></p>
+          <p style="margin-top:0.5rem;color:#94a3b8">Uptime: ${Math.floor(data.uptime)}s | ${data.timestamp}</p>`;
+      } catch {
+        document.getElementById('health-card').innerHTML = '<p style="color:#f87171">API indisponível</p>';
+      }
+    }
+
+    loadSkills();
+    loadProjects();
+    checkHealth();
+  </script>
+</body>
+</html>
