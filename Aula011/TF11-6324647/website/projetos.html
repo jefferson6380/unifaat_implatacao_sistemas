@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projetos desenvolvidos por Gabriel Santiago - Full Stack e Cloud AWS">
+  <title>Projetos | Gabriel Santiago</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav aria-label="Navegação principal">
+  <a href="index.html" class="nav-logo">GS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Sobre</a></li>
+    <li><a href="projetos.html">Projetos</a></li>
+    <li><a href="experiencia.html">Experiência</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="projetos" aria-labelledby="proj-title">
+    <div class="container">
+      <h1 id="proj-title" class="section-title">Meus <span>Projetos</span></h1>
+      <p class="section-sub">Soluções desenvolvidas com foco em escalabilidade e boas práticas</p>
+
+      <div class="cards-grid">
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">☁️</div>
+          <h3>Portfólio AWS</h3>
+          <p>Website estático hospedado no S3 com distribuição via CloudFront, HTTPS automático, compressão Gzip e pipeline CI/CD.</p>
+          <div class="card-tags">
+            <span class="tag">S3</span><span class="tag">CloudFront</span>
+            <span class="tag">Lambda</span><span class="tag">GitHub Actions</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🛒</div>
+          <h3>E-commerce Serverless</h3>
+          <p>Plataforma completa com catálogo de produtos, carrinho, checkout e painel administrativo. Arquitetura 100% serverless.</p>
+          <div class="card-tags">
+            <span class="tag">API Gateway</span><span class="tag">Lambda</span>
+            <span class="tag">DynamoDB</span><span class="tag">Cognito</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">📊</div>
+          <h3>Dashboard CloudWatch</h3>
+          <p>Sistema de observabilidade com métricas customizadas, alertas SNS e relatórios automáticos de custos e performance.</p>
+          <div class="card-tags">
+            <span class="tag">CloudWatch</span><span class="tag">SNS</span>
+            <span class="tag">Python</span><span class="tag">Boto3</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🐳</div>
+          <h3>App Containerizada</h3>
+          <p>API REST Node.js com Docker Compose, banco PostgreSQL, Nginx reverso e deploy automatizado via GitHub Actions.</p>
+          <div class="card-tags">
+            <span class="tag">Docker</span><span class="tag">Node.js</span>
+            <span class="tag">PostgreSQL</span><span class="tag">Nginx</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🔐</div>
+          <h3>IAM & Security Audit</h3>
+          <p>Ferramenta de auditoria de permissões IAM que identifica políticas excessivamente permissivas e gera relatório de conformidade.</p>
+          <div class="card-tags">
+            <span class="tag">IAM</span><span class="tag">Python</span>
+            <span class="tag">Boto3</span><span class="tag">AWS CLI</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🗄️</div>
+          <h3>Migração RDS</h3>
+          <p>Migração de banco MySQL on-premise para Amazon RDS com estratégia blue/green, zero downtime e backup automatizado.</p>
+          <div class="card-tags">
+            <span class="tag">RDS</span><span class="tag">MySQL</span>
+            <span class="tag">DMS</span><span class="tag">Terraform</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- UPLOAD SECTION -->
+      <div style="margin-top:4rem">
+        <h2 class="section-title">Upload de <span>Imagens</span></h2>
+        <p class="section-sub">Adicione imagens dos seus projetos (JPG, PNG, WebP · máx. 5MB)</p>
+
+        <div id="upload-area" class="upload-area" role="button" tabindex="0" aria-label="Área de upload de imagens">
+          <span style="font-size:2.5rem" aria-hidden="true">📁</span>
+          <p>Arraste imagens aqui ou <strong>clique para selecionar</strong></p>
+          <input type="file" id="file-input" accept="image/*" multiple hidden aria-label="Selecionar arquivos">
+        </div>
+
+        <div id="preview-grid" aria-label="Pré-visualização das imagens"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Gabriel Santiago · <a href="https://github.com/gabriel-santiago" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/gabriel-santiago" target="_blank" rel="noopener">LinkedIn</a></p>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>
