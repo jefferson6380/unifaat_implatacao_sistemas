@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-contact-form",
+  "version": "1.0.0",
+  "description": "Lambda para formulário de contato — DynamoDB + SES",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/client-ses": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.x"
+  }
+}
