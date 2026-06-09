@@ -1,0 +1,11 @@
+Riquelme Menezes
+RA: 6324064
+Curso: ADS - UniFAAT
+
+Resumo profissional:
+- Implementacao de sistemas web com foco em cloud
+- Automacao de processos com scripts e APIs
+- Praticas de performance, seguranca e monitoramento
+
+Observacao:
+Substitua este arquivo por um PDF real do seu CV para publicacao final no bucket de assets.

@@ -1,0 +1,5 @@
+{
+    "DashboardArn": "arn:aws:cloudwatch::506609161223:dashboard/tf11-6324064-dashboard",
+    "DashboardBody": "{\"widgets\":[{\"properties\":{\"region\":\"us-east-1\",\"stat\":\"Sum\",\"title\":\"CloudFront Requests\",\"metrics\":[[\"AWS/CloudFront\",\"Requests\",\"DistributionId\",\"EV2AYPBZUIS8M\",\"Region\",\"Global\"]],\"period\":300},\"height\":6,\"width\":12,\"x\":0,\"type\":\"metric\",\"y\":0},{\"properties\":{\"region\":\"us-east-1\",\"stat\":\"Average\",\"title\":\"CloudFront CacheHitRate\",\"metrics\":[[\"AWS/CloudFront\",\"CacheHitRate\",\"DistributionId\",\"EV2AYPBZUIS8M\",\"Region\",\"Global\"]],\"period\":300},\"height\":6,\"width\":12,\"x\":12,\"type\":\"metric\",\"y\":0}]}",
+    "DashboardName": "tf11-6324064-dashboard"
+}
