@@ -1,0 +1,7 @@
+.env
+infrastructure/vars.sh
+*.zip
+node_modules/
+.DS_Store
+Thumbs.db
+lambda/**/package-lock.json

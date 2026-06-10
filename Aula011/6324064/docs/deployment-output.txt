@@ -1,0 +1,17 @@
+AWS_ACCOUNT_ID=506609161223
+AWS_REGION=us-east-1
+WEBSITE_BUCKET=tf11-6324064-site-20260609144018
+ASSETS_BUCKET=tf11-6324064-assets-20260609144018
+LOGS_BUCKET=tf11-6324064-logs-20260609151929
+S3_WEBSITE_URL=http://tf11-6324064-site-20260609144018.s3-website-us-east-1.amazonaws.com
+CLOUDFRONT_DISTRIBUTION_ID=EV2AYPBZUIS8M
+CLOUDFRONT_DOMAIN=https://d1iufybby9ovf9.cloudfront.net
+CLOUDFRONT_STATUS=Deployed
+DYNAMODB_TABLE=tf11-contacts-6324064
+API_GATEWAY_ID=36v8ggdhk7
+CONTACT_API_URL=https://36v8ggdhk7.execute-api.us-east-1.amazonaws.com/prod/contact
+UPLOAD_API_URL=https://36v8ggdhk7.execute-api.us-east-1.amazonaws.com/prod/upload
+GALLERY_API_URL=https://36v8ggdhk7.execute-api.us-east-1.amazonaws.com/prod/upload
+LAMBDA_CONTACT=tf11-6324064-contact-form
+LAMBDA_UPLOAD=tf11-6324064-upload-url
+LAMBDA_IMAGE=tf11-6324064-image-processor

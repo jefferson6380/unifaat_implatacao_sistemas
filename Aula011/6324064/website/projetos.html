@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projetos | Riquelme Menezes</title>
+  <meta name="description" content="Galeria de projetos e upload de assets para o portfolio cloud.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Ir para inicio">
+        <span class="brand-mark">RM</span>
+        <span class="brand-text">Riquelme Menezes</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="site-nav" id="menu">
+        <a href="index.html" data-page="index.html">Inicio</a>
+        <a href="projetos.html" data-page="projetos.html">Projetos</a>
+        <a href="experiencia.html" data-page="experiencia.html">Experiencia</a>
+        <a href="contato.html" data-page="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-main">
+    <section class="panel" data-reveal>
+      <p class="eyebrow">Portfolio tecnico</p>
+      <h1>Projetos e entregas</h1>
+      <p class="lead">Cards com foco no problema de negocio, stack aplicada e resultado medido.</p>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="images/project-01.webp" alt="Projeto dashboard cloud" loading="lazy">
+          <div>
+            <h3>Cloud Cost Radar</h3>
+            <p>Visualizacao de custos AWS com alertas por limite e tendencia semanal.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="images/project-02.webp" alt="Projeto modernizacao web" loading="lazy">
+          <div>
+            <h3>Modernizacao de Portal</h3>
+            <p>Migracao de site legado para stack estatica com reducao de latencia e custos.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="images/project-03.webp" alt="Projeto automacao de deploy" loading="lazy">
+          <div>
+            <h3>Deploy Automatizado</h3>
+            <p>Pipeline para publicar assets, invalidar cache e rastrear falhas de release.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" data-reveal>
+      <h2>Upload de imagem de projeto</h2>
+      <p>Upload controlado por tipo e tamanho. Se API estiver configurada, envia para S3 via URL assinada.</p>
+      <div class="upload-box">
+        <label for="projectImage">Selecione uma imagem (webp, jpg ou png, max 5 MB)</label>
+        <input id="projectImage" type="file" accept="image/webp,image/jpeg,image/png">
+        <button id="uploadButton" class="btn btn-primary" type="button">Enviar imagem</button>
+        <p id="uploadStatus" class="status"></p>
+      </div>
+      <div id="dynamicGallery" class="project-grid compact" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Riquelme Menezes</p>
+      <p>Cloud portfolio em evolucao continua</p>
+    </div>
+  </footer>
+</body>
+</html>

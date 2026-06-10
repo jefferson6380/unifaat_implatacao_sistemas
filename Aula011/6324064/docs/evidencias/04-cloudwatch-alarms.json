@@ -1,0 +1,100 @@
+{
+    "MetricAlarms": [
+        {
+            "AlarmName": "tf11-6324064-billing-usd-5",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:506609161223:alarm:tf11-6324064-billing-usd-5",
+            "AlarmDescription": "TF11 billing threshold",
+            "AlarmConfigurationUpdatedTimestamp": "2026-06-09T15:19:58.317000-03:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-06-09T18:20:55.015+0000\",\"statistic\":\"Maximum\",\"period\":21600,\"recentDatapoints\":[],\"threshold\":5.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-06-09T12:20:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-06-09T15:20:55.017000-03:00",
+            "MetricName": "EstimatedCharges",
+            "Namespace": "AWS/Billing",
+            "Statistic": "Maximum",
+            "Dimensions": [
+                {
+                    "Name": "Currency",
+                    "Value": "USD"
+                }
+            ],
+            "Period": 21600,
+            "EvaluationPeriods": 1,
+            "Threshold": 5.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-06-09T15:20:55.017000-03:00"
+        },
+        {
+            "AlarmName": "tf11-6324064-cache-hit-low",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:506609161223:alarm:tf11-6324064-cache-hit-low",
+            "AlarmDescription": "TF11 cloudfront cache hit low",
+            "AlarmConfigurationUpdatedTimestamp": "2026-06-09T15:40:23.192000-03:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-06-09T18:21:19.387+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[],\"threshold\":60.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-06-09T18:12:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-06-09T15:21:19.388000-03:00",
+            "MetricName": "CacheHitRate",
+            "Namespace": "AWS/CloudFront",
+            "Statistic": "Average",
+            "Dimensions": [
+                {
+                    "Name": "DistributionId",
+                    "Value": "EV2AYPBZUIS8M"
+                },
+                {
+                    "Name": "Region",
+                    "Value": "Global"
+                }
+            ],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "Threshold": 60.0,
+            "ComparisonOperator": "LessThanThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-06-09T15:21:19.388000-03:00"
+        },
+        {
+            "AlarmName": "tf11-6324064-cloudfront-4xx",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:506609161223:alarm:tf11-6324064-cloudfront-4xx",
+            "AlarmDescription": "TF11 cloudfront 4xx",
+            "AlarmConfigurationUpdatedTimestamp": "2026-06-09T15:40:21.625000-03:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-06-09T18:20:31.631+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[],\"threshold\":5.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-06-09T18:11:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-06-09T15:20:31.633000-03:00",
+            "MetricName": "4xxErrorRate",
+            "Namespace": "AWS/CloudFront",
+            "Statistic": "Average",
+            "Dimensions": [
+                {
+                    "Name": "DistributionId",
+                    "Value": "EV2AYPBZUIS8M"
+                },
+                {
+                    "Name": "Region",
+                    "Value": "Global"
+                }
+            ],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "Threshold": 5.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-06-09T15:20:31.633000-03:00"
+        }
+    ],
+    "CompositeAlarms": []
+}
