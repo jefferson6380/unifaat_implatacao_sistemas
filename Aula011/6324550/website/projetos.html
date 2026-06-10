@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projetos desenvolvidos por Bruno Pereira dos Santos - ADS UniFAAT" />
+  <title>Projetos | Bruno Pereira dos Santos</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Bruno P. Santos</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html" class="active">Projetos</a></li>
+        <li><a href="experiencia.html">Experiência</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Meus Projetos</h1>
+      <p>Projetos desenvolvidos ao longo do curso de ADS e além</p>
+    </section>
+
+    <section class="projects">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="aws">AWS</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="devops">DevOps</button>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card" data-category="aws web">
+          <div class="project-image">
+            <img src="images/project-portfolio.webp" alt="Portfólio S3 CloudFront" loading="lazy" width="400" height="250" />
+          </div>
+          <div class="project-info">
+            <h3>Portfólio S3 + CloudFront</h3>
+            <p>Website estático hospedado no Amazon S3 com distribuição global via CloudFront CDN, HTTPS e cache otimizado.</p>
+            <div class="project-tags">
+              <span class="tag">AWS S3</span>
+              <span class="tag">CloudFront</span>
+              <span class="tag">HTML/CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Projeto</a>
+              <a href="https://github.com/" class="btn btn-sm btn-secondary" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="aws devops">
+          <div class="project-image">
+            <img src="images/project-rds.webp" alt="Migração RDS" loading="lazy" width="400" height="250" />
+          </div>
+          <div class="project-info">
+            <h3>Migração para Amazon RDS</h3>
+            <p>Migração de banco de dados PostgreSQL local para Amazon RDS com monitoramento via CloudWatch e Performance Insights.</p>
+            <div class="project-tags">
+              <span class="tag">AWS RDS</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">CloudWatch</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Projeto</a>
+              <a href="https://github.com/" class="btn btn-sm btn-secondary" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="aws devops web">
+          <div class="project-image">
+            <img src="images/project-docker.webp" alt="Aplicação Docker na EC2" loading="lazy" width="400" height="250" />
+          </div>
+          <div class="project-info">
+            <h3>App Containerizada na EC2</h3>
+            <p>Deploy de aplicação Node.js + frontend em containers Docker na AWS EC2 com VPC, subnets e security groups configurados.</p>
+            <div class="project-tags">
+              <span class="tag">Docker</span>
+              <span class="tag">AWS EC2</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">VPC</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Projeto</a>
+              <a href="https://github.com/" class="btn btn-sm btn-secondary" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="web">
+          <div class="project-image">
+            <img src="images/project-api.webp" alt="API REST" loading="lazy" width="400" height="250" />
+          </div>
+          <div class="project-info">
+            <h3>API REST com Lambda</h3>
+            <p>API serverless construída com AWS Lambda + API Gateway para processamento de formulários e armazenamento no DynamoDB.</p>
+            <div class="project-tags">
+              <span class="tag">Lambda</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">DynamoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-sm">Ver Projeto</a>
+              <a href="https://github.com/" class="btn btn-sm btn-secondary" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="upload-section">
+      <h2>Upload de Imagem para Projetos</h2>
+      <p>Envie imagens para o bucket S3 de assets do portfólio</p>
+      <div class="upload-area" id="uploadArea">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <label for="fileInput" class="upload-label">
+          <span class="upload-icon">📁</span>
+          <span>Clique para selecionar ou arraste uma imagem</span>
+          <span class="upload-hint">PNG, JPG, WebP · Máx 5MB</span>
+        </label>
+        <div id="uploadStatus" class="upload-status"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bruno Pereira dos Santos · RA 6324550 · UniFAAT ADS</p>
+    <div class="social-links">
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/upload.js"></script>
+</body>
+</html>
