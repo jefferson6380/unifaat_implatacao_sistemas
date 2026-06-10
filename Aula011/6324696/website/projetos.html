@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projetos desenvolvidos por Natan Borges Leme — sistemas web, cloud computing e soluções com AWS." />
+  <meta name="author" content="Natan Borges Leme" />
+  <title>Projetos — Natan Borges Leme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav role="navigation" aria-label="Menu principal">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Início">NBL</a>
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="projetos.html" class="active" aria-current="page">Projetos</a></li>
+      <li><a href="experiencia.html">Experiência</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Início</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Projetos</span>
+    </nav>
+    <h1 class="section-title">Meus Projetos</h1>
+    <p class="section-subtitle">Soluções desenvolvidas com foco em qualidade e boas práticas</p>
+  </div>
+</div>
+
+<!-- UPLOAD SECTION -->
+<section class="section" style="padding-top:0;padding-bottom:2rem;" aria-labelledby="upload-title">
+  <div class="container">
+    <div class="fade-in" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1rem;">
+      <h2 id="upload-title" style="font-size:1.1rem;margin-bottom:.25rem;">📁 Upload de Imagens</h2>
+      <p style="font-size:.85rem;margin-bottom:1.5rem;">Adicione imagens de projetos diretamente para o S3 (requer autenticação).</p>
+      <div class="upload-zone" id="uploadZone" role="button" tabindex="0" aria-label="Zona de upload de arquivos">
+        <div class="upload-icon" aria-hidden="true">📤</div>
+        <p>Arraste imagens aqui ou <strong style="color:var(--primary);">clique para selecionar</strong></p>
+        <small>PNG, JPG, WebP — máx. 5MB por arquivo</small>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" multiple hidden aria-label="Selecionar imagens" />
+      <div class="upload-preview" id="uploadPreview" role="list" aria-label="Pré-visualização das imagens"></div>
+      <div id="uploadStatus" style="font-size:.85rem;margin-top:.75rem;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="section" style="padding-top:0;" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="projects-filter fade-in" role="group" aria-label="Filtrar projetos">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="cloud">Cloud / AWS</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid" aria-label="Grade de projetos">
+
+      <!-- PROJETO 1 -->
+      <article class="project-card fade-in" data-category="cloud web" aria-labelledby="proj1-title">
+        <div class="project-image" aria-hidden="true" style="font-size:3rem;">☁️</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">AWS S3</span>
+            <span class="tag">CloudFront</span>
+            <span class="tag">Lambda</span>
+            <span class="tag">DynamoDB</span>
+          </div>
+          <h3 id="proj1-title">Portfólio Profissional na AWS</h3>
+          <p>Portfólio pessoal hospedado no Amazon S3 com distribuição global via CloudFront CDN, HTTPS obrigatório, Lambda para processamento de imagens (WebP) e formulário de contato integrado ao DynamoDB. Projeto TF11 — Implementação de Sistemas, UniFAAT.</p>
+          <div class="project-links">
+            <a href="https://github.com/NatanBG/unifaat_implatacao_sistemas" target="_blank" rel="noopener" aria-label="Ver código no GitHub">⌥ GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJETO 2 -->
+      <article class="project-card fade-in" data-category="web" aria-labelledby="proj2-title">
+        <div class="project-image" aria-hidden="true" style="font-size:3rem;">🏋️</div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Responsivo</span>
+          </div>
+          <h3 id="proj2-title">LifeStyle — Site de Academia</h3>
+          <p>Site institucional para uma academia desenvolvido com HTML5 e CSS3 puro. Layout moderno e responsivo com seções de planos, serviços e informações de contato. Projeto acadêmico desenvolvido na UniFAAT.</p>
+          <div class="project-links">
+            <a href="https://github.com/NatanBG/LifeStyle" target="_blank" rel="noopener" aria-label="Ver código no GitHub">⌥ GitHub</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2025 <strong>Natan Borges Leme</strong> · ADS UniFAAT RA 6324696</p>
+        <p style="font-size:.75rem;margin-top:.25rem;">Hospedado no Amazon S3 + CloudFront ☁️</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="experiencia.html">Experiência</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Voltar ao topo">↑</button>
+
+<script src="js/main.js"></script>
+<script src="js/upload.js"></script>
+</body>
+</html>

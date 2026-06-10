@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com Gabriel Santiago - Desenvolvedor Full Stack">
+  <title>Contato | Gabriel Santiago</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav aria-label="Navegação principal">
+  <a href="index.html" class="nav-logo">GS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Sobre</a></li>
+    <li><a href="projetos.html">Projetos</a></li>
+    <li><a href="experiencia.html">Experiência</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="contato" aria-labelledby="contato-title">
+    <div class="container">
+      <h1 id="contato-title" class="section-title">Entre em <span>Contato</span></h1>
+      <p class="section-sub">Responderei em até 24 horas</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1.5fr; gap:3rem; align-items:start">
+
+        <!-- INFO -->
+        <div>
+          <div class="card" style="margin-bottom:1rem">
+            <div class="card-icon" aria-hidden="true">📧</div>
+            <h3>Email</h3>
+            <p><a href="mailto:gabriel.santiago@email.com" style="color:var(--accent)">gabriel.santiago@email.com</a></p>
+          </div>
+          <div class="card" style="margin-bottom:1rem">
+            <div class="card-icon" aria-hidden="true">💼</div>
+            <h3>LinkedIn</h3>
+            <p><a href="https://linkedin.com/in/gabriel-santiago" target="_blank" rel="noopener" style="color:var(--accent)">linkedin.com/in/gabriel-santiago</a></p>
+          </div>
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">🐙</div>
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/gabriel-santiago" target="_blank" rel="noopener" style="color:var(--accent)">github.com/gabriel-santiago</a></p>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <form id="contact-form" novalidate aria-label="Formulário de contato">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Nome *</label>
+              <input type="text" id="name" name="name" required placeholder="Seu nome completo" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Assunto *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Selecione um assunto</option>
+              <option value="freelance">Projeto Freelance</option>
+              <option value="emprego">Oportunidade de Emprego</option>
+              <option value="parceria">Parceria</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensagem *</label>
+            <textarea id="message" name="message" required placeholder="Descreva seu projeto ou oportunidade..." rows="5"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%">Enviar Mensagem</button>
+
+          <div id="form-status" role="alert" aria-live="polite"></div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Gabriel Santiago · <a href="https://github.com/gabriel-santiago" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/gabriel-santiago" target="_blank" rel="noopener">LinkedIn</a></p>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/app.js" defer></script>
+</body>
+</html>

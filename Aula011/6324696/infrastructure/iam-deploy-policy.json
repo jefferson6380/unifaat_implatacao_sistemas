@@ -1,0 +1,181 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3Portfolio",
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:ListBucket",
+        "s3:ListBucketVersions",
+        "s3:GetBucketLocation",
+        "s3:GetBucketWebsite",
+        "s3:PutBucketWebsite",
+        "s3:DeleteBucketWebsite",
+        "s3:GetBucketVersioning",
+        "s3:PutBucketVersioning",
+        "s3:PutBucketPolicy",
+        "s3:GetBucketPolicy",
+        "s3:DeleteBucketPolicy",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:PutBucketCORS",
+        "s3:GetBucketCORS",
+        "s3:PutBucketAcl",
+        "s3:PutBucketLogging",
+        "s3:PutLifecycleConfiguration",
+        "s3:GetLifecycleConfiguration",
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject",
+        "s3:DeleteObjectVersion",
+        "s3:GetObjectVersion",
+        "s3:PutObjectAcl",
+        "s3:ListAllMyBuckets",
+        "s3:HeadBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::natan-portifolio-*",
+        "arn:aws:s3:::natan-portifolio-*/*"
+      ]
+    },
+    {
+      "Sid": "CloudFrontPortfolio",
+      "Effect": "Allow",
+      "Action": [
+        "cloudfront:CreateDistribution",
+        "cloudfront:UpdateDistribution",
+        "cloudfront:DeleteDistribution",
+        "cloudfront:GetDistribution",
+        "cloudfront:GetDistributionConfig",
+        "cloudfront:ListDistributions",
+        "cloudfront:CreateInvalidation",
+        "cloudfront:GetInvalidation",
+        "cloudfront:ListInvalidations",
+        "cloudfront:TagResource",
+        "cloudfront:CreateResponseHeadersPolicy",
+        "cloudfront:GetResponseHeadersPolicy"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "LambdaPortfolio",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateFunction",
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:DeleteFunction",
+        "lambda:GetFunction",
+        "lambda:GetFunctionConfiguration",
+        "lambda:AddPermission",
+        "lambda:RemovePermission",
+        "lambda:InvokeFunction",
+        "lambda:ListFunctions",
+        "lambda:CreateEventSourceMapping",
+        "lambda:DeleteEventSourceMapping",
+        "lambda:PublishLayerVersion",
+        "lambda:GetLayerVersion"
+      ],
+      "Resource": [
+        "arn:aws:lambda:us-east-1:*:function:portfolio-*"
+      ]
+    },
+    {
+      "Sid": "LambdaLayerPublic",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:ListLayers",
+        "lambda:GetLayerVersion"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "APIGatewayPortfolio",
+      "Effect": "Allow",
+      "Action": [
+        "apigateway:GET",
+        "apigateway:POST",
+        "apigateway:PUT",
+        "apigateway:DELETE",
+        "apigateway:PATCH"
+      ],
+      "Resource": [
+        "arn:aws:apigateway:us-east-1::/*"
+      ]
+    },
+    {
+      "Sid": "DynamoDBPortfolio",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:CreateTable",
+        "dynamodb:DeleteTable",
+        "dynamodb:DescribeTable",
+        "dynamodb:PutItem",
+        "dynamodb:GetItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:Scan",
+        "dynamodb:Query",
+        "dynamodb:ListTables"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:us-east-1:*:table/portfolio-*"
+      ]
+    },
+    {
+      "Sid": "SESPortfolio",
+      "Effect": "Allow",
+      "Action": [
+        "ses:SendEmail",
+        "ses:SendRawEmail",
+        "ses:VerifyEmailIdentity",
+        "ses:GetIdentityVerificationAttributes",
+        "ses:ListIdentities",
+        "ses:DeleteIdentity"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "IAMLambdaRole",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy",
+        "iam:ListAttachedRolePolicies",
+        "iam:PassRole"
+      ],
+      "Resource": "arn:aws:iam::*:role/portfolio-lambda-role"
+    },
+    {
+      "Sid": "CloudWatchPortfolio",
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricAlarm",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:DeleteAlarms",
+        "cloudwatch:GetMetricStatistics",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "BillingReadOnly",
+      "Effect": "Allow",
+      "Action": [
+        "budgets:ViewBudget",
+        "budgets:DescribeBudgets",
+        "ce:GetCostAndUsage"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

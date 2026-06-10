@@ -1,0 +1,11 @@
+{
+  "name": "image-processor-lambda",
+  "version": "1.0.0",
+  "description": "Lambda para redimensionamento e conversão de imagens para WebP — TF11",
+  "main": "index.js",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "sharp": "^0.33.0"
+  }
+}

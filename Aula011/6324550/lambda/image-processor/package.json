@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-image-processor",
+  "version": "1.0.0",
+  "description": "Lambda para processamento de uploads de imagens - RA 6324550",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/s3-request-presigner": "^3.0.0"
+  }
+}
