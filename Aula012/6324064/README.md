@@ -81,7 +81,11 @@ Parametros fornecidos:
 ### Parte 3 - Verificacao remota e bonus EKS
 1. `evidencias/08-ecr-describe-images.txt` e `evidencias/08-ecr-describe-images.png`
    - Verificacao remota da imagem no ECR exibindo tag `v1.0`.
-2. Bonus EKS
+2. `evidencias/09-aws-ecr-repositories-console.png`
+   - Print direto do AWS Console (ECR > Repositorios privados) mostrando o repositorio `web-app-repo-6324064`.
+3. `evidencias/10-aws-ecr-images-console.png`
+   - Print direto do AWS Console (detalhe do repositorio) mostrando a aba Imagens com a tag `v1.0`.
+4. Bonus EKS
    - Nao executado neste TF.
 
 ### Parte 4 - Comandos executados
