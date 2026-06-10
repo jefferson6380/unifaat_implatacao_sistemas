@@ -1,0 +1,2 @@
+$ docker images --format "table {{.Repository}}`t{{.Tag}}`t{{.ID}}`t{{.Size}}" | findstr 506609161223.dkr.ecr.us-east-1.amazonaws.com/web-app-repo-6324064
+506609161223.dkr.ecr.us-east-1.amazonaws.com/web-app-repo-6324064   v1.0        231eb799abb4   92.7MB

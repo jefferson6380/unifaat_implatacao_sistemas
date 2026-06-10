@@ -1,0 +1,5 @@
+$ aws ecr describe-images --repository-name web-app-repo-6324064 --region us-east-1 --query imageDetails[].imageTags[0]
+[
+    "v1.0"
+]
+
