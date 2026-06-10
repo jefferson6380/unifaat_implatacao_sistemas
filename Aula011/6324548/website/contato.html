@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com Luiz Felipe Souza">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <title>Contato | Luiz Felipe Souza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">LF<span>.</span>dev</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li><a href="experiencia.html">Experiência</a></li>
+      <li><a href="contato.html" class="active">Contato</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section>
+    <h2>Entrar em Contato</h2>
+    <p style="margin-bottom:2.5rem;">
+      Quer conversar sobre projetos, oportunidades ou colaborações?
+      Preencha o formulário e responderei em breve.
+    </p>
+
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">E-mail</div>
+            <a href="mailto:luizfelipe.souza@althaia.com.br">luizfelipe.souza@althaia.com.br</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/luiz-felipe-siqueira-de-souza-370994214" target="_blank" rel="noopener">linkedin.com/in/luiz-felipe-siqueira-de-souza</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">GitHub</div>
+            <a href="https://github.com/Felipwz" target="_blank" rel="noopener">github.com/Felipwz</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">Localização</div>
+            <span>Atibaia, SP – Brasil</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:0.5rem;">
+          <p style="font-size:0.85rem;">
+            ⚡ Este formulário é processado via<br>
+            <strong style="color:var(--text);">AWS Lambda + API Gateway</strong><br>
+            e armazenado no <strong style="color:var(--text);">DynamoDB</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required minlength="2">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="assunto">Assunto *</label>
+          <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem" required>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Mensagem *</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem..." required minlength="10"></textarea>
+        </div>
+
+        <div id="formFeedback" class="form-feedback"></div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          Enviar Mensagem
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Luiz Felipe Souza · Feito com HTML, CSS e AWS ☁️</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
