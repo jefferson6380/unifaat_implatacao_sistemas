@@ -61,25 +61,25 @@ Parametros fornecidos:
 ## Questao 6 - Evidencias praticas da execucao do Lab012
 
 ### Parte 1 - Preparacao e Configuracao
-1. `evidencias/01-aws-configure-list.txt`
-   - Saida do `aws configure list`.
-2. `evidencias/02-ecr-login.txt`
+1. `evidencias/01-aws-configure-list.txt` e `evidencias/01-aws-configure-list.png`
+   - Saida do `aws configure list` (captura de terminal e print).
+2. `evidencias/02-ecr-login.txt` e `evidencias/02-ecr-login.png`
    - Comando de login no ECR e retorno `Login Succeeded`.
-3. `evidencias/03-docker-build.txt`
+3. `evidencias/03-docker-build.txt` e `evidencias/03-docker-build.png`
    - Build da imagem `web-app-v1:v1.0` concluido com sucesso.
 
 ### Parte 2 - Registro e Push da imagem
-1. `evidencias/04-ecr-create-describe.txt`
+1. `evidencias/04-ecr-create-describe.txt` e `evidencias/04-ecr-create-describe.png`
    - Criacao e descricao do repositorio ECR `web-app-repo-6324064`.
-2. `evidencias/05-docker-tag.txt`
+2. `evidencias/05-docker-tag.txt` e `evidencias/05-docker-tag.png`
    - Tag da imagem local com URI completo do ECR.
-3. `evidencias/06-docker-images-filtered.txt`
+3. `evidencias/06-docker-images-filtered.txt` e `evidencias/06-docker-images-filtered.png`
    - Verificacao da imagem local marcada com o URI do ECR.
-4. `evidencias/07-docker-push.txt`
+4. `evidencias/07-docker-push.txt` e `evidencias/07-docker-push.png`
    - Push da imagem para o ECR com upload dos layers e digest final.
 
 ### Parte 3 - Verificacao remota e bonus EKS
-1. `evidencias/08-ecr-describe-images.txt`
+1. `evidencias/08-ecr-describe-images.txt` e `evidencias/08-ecr-describe-images.png`
    - Verificacao remota da imagem no ECR exibindo tag `v1.0`.
 2. Bonus EKS
    - Nao executado neste TF.
