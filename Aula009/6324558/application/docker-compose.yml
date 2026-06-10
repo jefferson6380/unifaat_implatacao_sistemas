@@ -1,0 +1,51 @@
+services:
+  nginx:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports: 
+    - "80:80"
+    networks:
+      - frontend-net
+    depends_on:
+      node-api:
+        condition: service_healthy
+  node-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    networks:
+      - api-net
+      - frontend-net
+    restart: always
+    healthcheck:
+      test: ["CMD","curl","-f","http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - api-net
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+
+networks:
+  frontend-net:
+  api-net:
+
+volumes:
+  pgdata:

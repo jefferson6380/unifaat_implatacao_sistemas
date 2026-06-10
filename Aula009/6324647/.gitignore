@@ -1,0 +1,17 @@
+# Chaves SSH - NUNCA commitar
+*.pem
+*.key
+
+# Variáveis de ambiente com valores reais
+.env
+!.env.example
+
+# IDs de infraestrutura gerados
+infrastructure/.infra-ids.env
+
+# Dependências
+application/backend/node_modules/
+
+# Banco de dados local
+*.db
+*.sqlite

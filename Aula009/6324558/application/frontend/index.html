@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Profissional | TF09</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Seu Nome - ADS UniFAAT</h1>
+            <p id="api-health">Status: <span id="status-indicator">Verificando...</span></p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Seção de Experiências (Requisito do Edital) -->
+        <section id="experiences">
+            <h2>Habilidades & Experiências</h2>
+            <div id="experience-list" class="grid-container"></div>
+        </section>
+
+        <hr>
+
+        <!-- Seção de Projetos (CRUD - Read) -->
+        <section id="projects">
+            <h2>Meus Projetos</h2>
+            <div id="projects-grid" class="grid-container"></div>
+        </section>
+
+        <hr>
+
+        <!-- Seção de Cadastro (CRUD - Create) -->
+        <section id="add-project">
+            <h2>Cadastrar Novo Projeto</h2>
+            <form id="form-projeto">
+                <input type="text" id="title" placeholder="Título do Projeto" required>
+                <textarea id="description" placeholder="Descrição" required></textarea>
+                <input type="text" id="tech_stack" placeholder="Tecnologias (ex: Node, Docker)">
+                <input type="url" id="url_repo" placeholder="Link do Repositório (opcional)">
+                <button type="submit">Adicionar ao Portfólio</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - TF09 Implementação de Sistemas</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

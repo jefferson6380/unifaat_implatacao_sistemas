@@ -1,0 +1,7 @@
+.env
+.infra-ids.env
+*.pem
+*.key
+__pycache__/
+*.pyc
+portfolio.db

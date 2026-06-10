@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Inter,Arial,sans-serif">
+  <!-- Background -->
+  <rect width="900" height="560" fill="#0d0f1a" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#e8e6f0">Arquitetura — Portfólio Natan Borges Leme (RA 6324696)</text>
+  <text x="450" y="56" text-anchor="middle" font-size="11" fill="#9490a8">TF11 — Implementação de Sistemas — UniFAAT</text>
+
+  <!-- ===== USUÁRIO ===== -->
+  <rect x="380" y="78" width="140" height="54" rx="10" fill="#1e1a36" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="450" y="100" text-anchor="middle" font-size="20" fill="#a78bfa">🌐</text>
+  <text x="450" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#e8e6f0">Usuário</text>
+
+  <!-- arrow down -->
+  <line x1="450" y1="132" x2="450" y2="158" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="450,164 444,154 456,154" fill="#a78bfa"/>
+
+  <!-- ===== CLOUDFRONT ===== -->
+  <rect x="300" y="164" width="300" height="64" rx="10" fill="#1e1a36" stroke="#a78bfa" stroke-width="2"/>
+  <text x="340" y="191" text-anchor="middle" font-size="22" fill="#a78bfa">☁️</text>
+  <text x="460" y="187" text-anchor="middle" font-size="13" font-weight="700" fill="#e8e6f0">Amazon CloudFront</text>
+  <text x="460" y="203" text-anchor="middle" font-size="10" fill="#9490a8">HTTPS · Cache · Gzip · Security Headers</text>
+  <text x="460" y="217" text-anchor="middle" font-size="10" fill="#9490a8">TLSv1.2 · PriceClass_100</text>
+
+  <!-- arrow down to S3 website -->
+  <line x1="450" y1="228" x2="450" y2="256" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="450,262 444,252 456,252" fill="#a78bfa"/>
+
+  <!-- ===== S3 WEBSITE BUCKET ===== -->
+  <rect x="270" y="262" width="360" height="64" rx="10" fill="#1e1a36" stroke="#34d399" stroke-width="2"/>
+  <text x="316" y="289" text-anchor="middle" font-size="22" fill="#34d399">🪣</text>
+  <text x="470" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="#e8e6f0">S3 — Website Bucket</text>
+  <text x="470" y="301" text-anchor="middle" font-size="10" fill="#9490a8">index.html · projetos.html · experiencia.html · contato.html</text>
+  <text x="470" y="315" text-anchor="middle" font-size="10" fill="#9490a8">css/ · js/ · images/ · 404.html</text>
+
+  <!-- left arrow: upload flow -->
+  <line x1="270" y1="294" x2="190" y2="294" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="184,294 194,288 194,300" fill="#34d399"/>
+
+  <!-- right arrow: contact flow -->
+  <line x1="630" y1="294" x2="710" y2="294" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="716,294 706,288 706,300" fill="#34d399"/>
+
+  <!-- ===== LEFT BRANCH: UPLOAD ===== -->
+  <!-- S3 Assets -->
+  <rect x="50" y="262" width="134" height="64" rx="10" fill="#1e1a36" stroke="#34d399" stroke-width="1.5"/>
+  <text x="117" y="285" text-anchor="middle" font-size="11" font-weight="700" fill="#e8e6f0">S3 — Assets Bucket</text>
+  <text x="117" y="300" text-anchor="middle" font-size="10" fill="#9490a8">Imagens · Privado</text>
+  <text x="117" y="313" text-anchor="middle" font-size="10" fill="#9490a8">Versionamento + Lifecycle</text>
+
+  <!-- arrow down to lambda image -->
+  <line x1="117" y1="326" x2="117" y2="354" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="117,360 111,350 123,350" fill="#34d399"/>
+
+  <!-- Lambda image processor -->
+  <rect x="38" y="360" width="158" height="54" rx="10" fill="#1e1a36" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="117" y="381" text-anchor="middle" font-size="11" font-weight="700" fill="#e8e6f0">λ image-processor</text>
+  <text x="117" y="396" text-anchor="middle" font-size="10" fill="#9490a8">Sharp · WebP · Resize</text>
+  <text x="117" y="408" text-anchor="middle" font-size="10" fill="#9490a8">thumb / medium / large</text>
+
+  <!-- label upload -->
+  <text x="224" y="284" text-anchor="middle" font-size="9" fill="#34d399">Upload</text>
+
+  <!-- ===== RIGHT BRANCH: CONTACT ===== -->
+  <!-- API Gateway -->
+  <rect x="716" y="262" width="134" height="64" rx="10" fill="#1e1a36" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="783" y="285" text-anchor="middle" font-size="11" font-weight="700" fill="#e8e6f0">API Gateway</text>
+  <text x="783" y="300" text-anchor="middle" font-size="10" fill="#9490a8">REST · POST /contact</text>
+  <text x="783" y="313" text-anchor="middle" font-size="10" fill="#9490a8">Rate limit · CORS</text>
+
+  <!-- arrow down to lambda contact -->
+  <line x1="783" y1="326" x2="783" y2="354" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="783,360 777,350 789,350" fill="#a78bfa"/>
+
+  <!-- Lambda contact form -->
+  <rect x="704" y="360" width="158" height="54" rx="10" fill="#1e1a36" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="783" y="381" text-anchor="middle" font-size="11" font-weight="700" fill="#e8e6f0">λ contact-form</text>
+  <text x="783" y="396" text-anchor="middle" font-size="10" fill="#9490a8">Valida · DynamoDB · SES</text>
+  <text x="783" y="408" text-anchor="middle" font-size="10" fill="#9490a8">Honeypot anti-spam</text>
+
+  <!-- arrow down to dynamodb -->
+  <line x1="750" y1="414" x2="700" y2="450" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="696,454 700,442 710,450" fill="#a78bfa"/>
+
+  <!-- arrow down to SES -->
+  <line x1="816" y1="414" x2="850" y2="450" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="854,454 844,450 852,442" fill="#a78bfa"/>
+
+  <!-- DynamoDB -->
+  <rect x="630" y="454" width="120" height="50" rx="10" fill="#1e1a36" stroke="#34d399" stroke-width="1.5"/>
+  <text x="690" y="474" text-anchor="middle" font-size="11" font-weight="700" fill="#e8e6f0">DynamoDB</text>
+  <text x="690" y="489" text-anchor="middle" font-size="10" fill="#9490a8">portfolio-contacts</text>
+
+  <!-- SES -->
+  <rect x="800" y="454" width="80" height="50" rx="10" fill="#1e1a36" stroke="#34d399" stroke-width="1.5"/>
+  <text x="840" y="474" text-anchor="middle" font-size="11" font-weight="700" fill="#e8e6f0">SES</text>
+  <text x="840" y="489" text-anchor="middle" font-size="10" fill="#9490a8">E-mail</text>
+
+  <!-- label contact -->
+  <text x="672" y="284" text-anchor="middle" font-size="9" fill="#34d399">Formulário</text>
+
+  <!-- ===== CLOUDWATCH ===== -->
+  <rect x="330" y="400" width="240" height="46" rx="10" fill="#1e1a36" stroke="#9490a8" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="450" y="420" text-anchor="middle" font-size="11" font-weight="700" fill="#9490a8">CloudWatch</text>
+  <text x="450" y="436" text-anchor="middle" font-size="10" fill="#9490a8">Métricas · Logs · Alertas de custo</text>
+
+  <!-- Legend -->
+  <rect x="30" y="500" width="840" height="46" rx="8" fill="#161929"/>
+  <rect x="46" y="514" width="14" height="14" rx="3" fill="none" stroke="#a78bfa" stroke-width="2"/>
+  <text x="68" y="525" font-size="10" fill="#9490a8">Serviços principais / fluxo</text>
+  <rect x="200" y="514" width="14" height="14" rx="3" fill="none" stroke="#34d399" stroke-width="2"/>
+  <text x="222" y="525" font-size="10" fill="#9490a8">Storage / dados</text>
+  <rect x="340" y="514" width="14" height="14" rx="3" fill="none" stroke="#9490a8" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="362" y="525" font-size="10" fill="#9490a8">Monitoramento</text>
+  <text x="700" y="522" font-size="10" fill="#9490a8">λ = AWS Lambda (Node.js 18)</text>
+  <text x="700" y="536" font-size="10" fill="#9490a8">🪣 = Amazon S3</text>
+</svg>

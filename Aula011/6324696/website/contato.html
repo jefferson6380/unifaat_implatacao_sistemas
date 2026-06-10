@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entre em contato com Natan Borges Leme — oportunidades de estágio, projetos e colaborações." />
+  <meta name="author" content="Natan Borges Leme" />
+  <title>Contato — Natan Borges Leme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav role="navigation" aria-label="Menu principal">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Início">NBL</a>
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li><a href="experiencia.html">Experiência</a></li>
+      <li><a href="contato.html" class="active" aria-current="page">Contato</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Início</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Contato</span>
+    </nav>
+    <h1 class="section-title">Entre em Contato</h1>
+    <p class="section-subtitle">Vamos conversar sobre oportunidades e projetos</p>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section" style="padding-top:0;" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- INFO LADO ESQUERDO -->
+      <aside aria-labelledby="contact-info-title">
+        <h2 id="contact-info-title" style="font-size:1.3rem;margin-bottom:1rem;">Informações de Contato</h2>
+        <p style="margin-bottom:2rem;">
+          Estou disponível para oportunidades de estágio, projetos freelancer e colaborações técnicas.
+          Respondo em até 24h!
+        </p>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📧</div>
+          <div class="contact-item-text">
+            <strong>E-mail</strong>
+            <span>lemenatan@gmail.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">🎓</div>
+          <div class="contact-item-text">
+            <strong>Instituição</strong>
+            <span>UniFAAT — RA 6324696</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📍</div>
+          <div class="contact-item-text">
+            <strong>Localização</strong>
+            <span>Atibaia, SP — Brasil</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">💼</div>
+          <div class="contact-item-text">
+            <strong>Disponibilidade</strong>
+            <span>Aberto a oportunidades</span>
+          </div>
+        </div>
+
+        <div class="contact-social" aria-label="Redes sociais">
+          <a href="#" class="social-link" aria-label="LinkedIn" title="LinkedIn">in</a>
+          <a href="#" class="social-link" aria-label="GitHub" title="GitHub">⌥</a>
+          <a href="#" class="social-link" aria-label="Instagram" title="Instagram">ig</a>
+        </div>
+      </aside>
+
+      <!-- FORMULÁRIO LADO DIREITO -->
+      <div class="contact-form-wrap">
+        <h2 id="contact-title" style="font-size:1.15rem;margin-bottom:1.5rem;">Envie uma Mensagem</h2>
+
+        <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+
+        <form id="contactForm" novalidate aria-labelledby="contact-title">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome *</label>
+              <input
+                type="text" id="name" name="name"
+                placeholder="Seu nome completo"
+                required minlength="2" maxlength="100"
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input
+                type="email" id="email" name="email"
+                placeholder="seu@email.com"
+                required maxlength="150"
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Assunto *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Selecione um assunto...</option>
+              <option value="estagio">Oportunidade de Estágio</option>
+              <option value="freelance">Projeto Freelancer</option>
+              <option value="colaboracao">Colaboração Técnica</option>
+              <option value="duvida">Dúvida sobre Projetos</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensagem *</label>
+            <textarea
+              id="message" name="message"
+              placeholder="Descreva sua proposta ou dúvida..."
+              required minlength="10" maxlength="2000"
+            ></textarea>
+          </div>
+
+          <!-- Honeypot anti-spam -->
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <span id="submitText">Enviar Mensagem</span>
+            <span id="submitSpinner" hidden aria-hidden="true">⏳</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg-card);border-top:1px solid var(--border);" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:2rem;">
+      <h2 id="faq-title" style="font-size:1.3rem;margin-bottom:.25rem;">Perguntas Frequentes</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
+      <div class="skill-card fade-in">
+        <h3 style="font-size:1rem;margin-bottom:.5rem;">📅 Qual sua disponibilidade?</h3>
+        <p style="font-size:.875rem;">Disponível para estágio em período integral ou parcial, e projetos freelance nos fins de semana.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3 style="font-size:1rem;margin-bottom:.5rem;">🌍 Trabalha remotamente?</h3>
+        <p style="font-size:.875rem;">Sim! Tenho experiência com trabalho remoto e ferramentas de colaboração como GitHub, Slack e Zoom.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3 style="font-size:1rem;margin-bottom:.5rem;">💬 Em quanto tempo responde?</h3>
+        <p style="font-size:.875rem;">Geralmente respondo em até 24 horas em dias úteis. Para urgências, prefira o LinkedIn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2025 <strong>Natan Borges Leme</strong> · ADS UniFAAT RA 6324696</p>
+        <p style="font-size:.75rem;margin-top:.25rem;">Hospedado no Amazon S3 + CloudFront ☁️</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="experiencia.html">Experiência</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Voltar ao topo">↑</button>
+
+<script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

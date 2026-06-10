@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yago | Software Engineer Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Yago.Dev</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#admin">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container hero-section">
+            <span class="tag">Disponível para novos projetos</span>
+            <h2>Construindo o futuro da web na nuvem.</h2>
+            <p>Especialista em arquitetura AWS, Docker e desenvolvimento Full Stack. Atualmente cursando ADS na UniFAAT.</p>
+            <div id="health-status">Verificando conexão com a API...</div>
+        </section>
+
+        <section id="projects" class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <!-- Projeto Principal: Panela de Barro -->
+                <div class="project-card featured">
+                    <div class="project-image" style="background-image: url('assets/hero.png');"></div>
+                    <div class="project-info">
+                        <span class="tag">Destaque</span>
+                        <h3>Panela de Barro</h3>
+                        <p>Landing page premium para um restaurante mineiro, com integração de infraestrutura AWS e deploy automatizado via Docker Compose.</p>
+                        <a href="panela.html" class="btn-project">Ver Projeto →</a>
+                    </div>
+                </div>
+
+                <!-- Outros Projetos (Placeholder para o script injetar) -->
+                <div id="projects-list-placeholder" style="display: contents;">
+                    <!-- Projetos do banco virão aqui -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <div class="glass-card">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p>Sou um entusiasta de infraestrutura como código (IaC) e desenvolvimento Full Stack. Este portfólio é um reflexo do trabalho realizado na disciplina de Implementação de Sistemas (TF09), onde gerenciei o provisionamento de recursos AWS via scripts e orquestração Docker.</p>
+            </div>
+        </section>
+
+        <section id="admin" class="container">
+            <h2 class="section-title">Gerenciar Conteúdo</h2>
+            <div class="projects-grid">
+                <div class="glass-card">
+                    <h3>Adicionar Projeto</h3>
+                    <form id="project-form">
+                        <input type="text" id="proj-title" placeholder="Título" required>
+                        <textarea id="proj-desc" placeholder="Descrição" required></textarea>
+                        <input type="url" id="proj-url" placeholder="URL do Projeto">
+                        <button type="submit">Salvar Projeto</button>
+                    </form>
+                </div>
+                <div class="glass-card">
+                    <h3>Adicionar Experiência</h3>
+                    <form id="experience-form">
+                        <input type="text" id="exp-role" placeholder="Cargo" required>
+                        <input type="text" id="exp-company" placeholder="Empresa" required>
+                        <input type="text" id="exp-period" placeholder="Período" required>
+                        <textarea id="exp-desc" placeholder="Descrição" required></textarea>
+                        <button type="submit">Salvar Experiência</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Yago - RA: 6324598 | UniFAAT - Tecnologia em ADS</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

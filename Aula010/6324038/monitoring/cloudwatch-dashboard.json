@@ -1,0 +1,70 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "properties": {
+        "title": "CPU Utilization",
+        "metrics": [["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", "northwind-rds"]],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "title": "Database Connections",
+        "metrics": [["AWS/RDS", "DatabaseConnections", "DBInstanceIdentifier", "northwind-rds"]],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "title": "Free Storage Space (bytes)",
+        "metrics": [["AWS/RDS", "FreeStorageSpace", "DBInstanceIdentifier", "northwind-rds"]],
+        "period": 300,
+        "stat": "Minimum",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "title": "Read/Write IOPS",
+        "metrics": [
+          ["AWS/RDS", "ReadIOPS", "DBInstanceIdentifier", "northwind-rds"],
+          ["AWS/RDS", "WriteIOPS", "DBInstanceIdentifier", "northwind-rds"]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "title": "Read/Write Latency (seconds)",
+        "metrics": [
+          ["AWS/RDS", "ReadLatency", "DBInstanceIdentifier", "northwind-rds"],
+          ["AWS/RDS", "WriteLatency", "DBInstanceIdentifier", "northwind-rds"]
+        ],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    },
+    {
+      "type": "metric",
+      "properties": {
+        "title": "Freeable Memory (bytes)",
+        "metrics": [["AWS/RDS", "FreeableMemory", "DBInstanceIdentifier", "northwind-rds"]],
+        "period": 300,
+        "stat": "Average",
+        "view": "timeSeries"
+      }
+    }
+  ]
+}

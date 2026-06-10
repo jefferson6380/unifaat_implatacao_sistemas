@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - TF09 AWS</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+
+        header {
+            background: linear-gradient(135deg, #1e3a5f, #0ea5e9);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 8px; }
+        header p { font-size: 1.1rem; opacity: 0.85; }
+
+        nav {
+            background: #1e293b;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            flex-wrap: wrap;
+        }
+        nav button {
+            background: transparent;
+            border: 1px solid #0ea5e9;
+            color: #0ea5e9;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        nav button:hover, nav button.active { background: #0ea5e9; color: #fff; }
+
+        main { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        section { display: none; }
+        section.active { display: block; }
+
+        h2 { font-size: 1.6rem; margin-bottom: 24px; color: #0ea5e9; }
+
+        /* Cards */
+        .card {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid #0ea5e9;
+        }
+        .card h3 { margin-bottom: 6px; }
+        .card p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 6px; }
+        .tag {
+            display: inline-block;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.78rem;
+            margin: 2px;
+            color: #7dd3fc;
+        }
+
+        /* Form */
+        .form-group { margin-bottom: 14px; }
+        label { display: block; margin-bottom: 4px; font-size: 0.9rem; color: #94a3b8; }
+        input, textarea, select {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 10px;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        .btn {
+            background: #0ea5e9;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #0284c7; }
+        .btn-danger { background: #ef4444; margin-left: 8px; }
+        .btn-danger:hover { background: #dc2626; }
+
+        /* Health */
+        .health-box {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .status-ok { color: #4ade80; }
+        .status-err { color: #f87171; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+        .info-item { background: #0f172a; padding: 12px; border-radius: 8px; }
+        .info-item span { display: block; font-size: 0.8rem; color: #64748b; }
+        .info-item strong { font-size: 1rem; }
+
+        /* Skills */
+        .skill-bar { margin-bottom: 14px; }
+        .skill-bar label { display: flex; justify-content: space-between; margin-bottom: 4px; }
+        .bar { background: #0f172a; border-radius: 10px; height: 8px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #0ea5e9, #38bdf8); }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>👨‍💻 Portfólio Pessoal</h1>
+    <p>Hospedado na AWS EC2 · TF09 - Implementação de Sistemas · UniFAAT ADS</p>
+</header>
+
+<nav>
+    <button class="active" onclick="showSection('sobre', this)">Sobre</button>
+    <button onclick="showSection('projetos', this)">Projetos</button>
+    <button onclick="showSection('habilidades', this)">Habilidades</button>
+    <button onclick="showSection('saude', this)">Health Check</button>
+</nav>
+
+<main>
+
+    <!-- Sobre -->
+    <section id="sobre" class="active">
+        <h2>Sobre Mim</h2>
+        <div class="card">
+            <h3>Estudante de ADS - UniFAAT</h3>
+            <p>Curso de Análise e Desenvolvimento de Sistemas, com foco em Cloud Computing e DevOps.</p>
+            <p style="margin-top:10px;">Este portfólio está hospedado em uma instância <strong>EC2 t3.micro</strong> na AWS,
+            dentro de uma <strong>VPC customizada</strong> com subnets pública e privada, protegida por <strong>Security Groups</strong>
+            seguindo o princípio do menor privilégio.</p>
+        </div>
+        <div class="card">
+            <h3>🏗️ Infraestrutura</h3>
+            <p>VPC: 10.0.0.0/16 · Região: us-east-1</p>
+            <span class="tag">EC2 t3.micro</span>
+            <span class="tag">VPC Customizada</span>
+            <span class="tag">Security Groups</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Nginx</span>
+            <span class="tag">MySQL</span>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos">
+        <h2>Projetos</h2>
+
+        <div class="card" style="margin-bottom:24px;">
+            <h3 style="margin-bottom:14px;">Adicionar Projeto</h3>
+            <div class="form-group">
+                <label>Título *</label>
+                <input type="text" id="proj-title" placeholder="Nome do projeto">
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea id="proj-desc" placeholder="Descreva o projeto..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Tecnologias</label>
+                <input type="text" id="proj-tech" placeholder="Node.js, Docker, AWS...">
+            </div>
+            <div class="form-group">
+                <label>GitHub URL</label>
+                <input type="url" id="proj-url" placeholder="https://github.com/...">
+            </div>
+            <button class="btn" onclick="addProject()">Adicionar</button>
+        </div>
+
+        <div id="projects-list"><p style="color:#64748b;">Carregando projetos...</p></div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades">
+        <h2>Habilidades</h2>
+        <div id="skills-list"><p style="color:#64748b;">Carregando habilidades...</p></div>
+    </section>
+
+    <!-- Health Check -->
+    <section id="saude">
+        <h2>Health Check</h2>
+        <div class="health-box">
+            <button class="btn" onclick="checkHealth()">Verificar Status</button>
+            <div id="health-result" style="margin-top:16px;"></div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    const API = '';
+    const CSRF = 'tf09-csrf-token'; // deve bater com CSRF_TOKEN no .env
+
+    function showSection(id, btn) {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        btn.classList.add('active');
+        if (id === 'projetos') loadProjects();
+        if (id === 'habilidades') loadSkills();
+    }
+
+    async function loadProjects() {
+        try {
+            const res = await fetch(`${API}/api/projects`);
+            const projects = await res.json();
+            const el = document.getElementById('projects-list');
+            if (!projects.length) { el.innerHTML = '<p style="color:#64748b;">Nenhum projeto cadastrado.</p>'; return; }
+            el.innerHTML = projects.map(p => `
+                <div class="card" id="proj-${p.id}">
+                    <h3>${p.title}</h3>
+                    <p>${p.description || ''}</p>
+                    ${p.tech_stack ? p.tech_stack.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('') : ''}
+                    ${p.github_url ? `<p style="margin-top:8px;"><a href="${p.github_url}" target="_blank" style="color:#0ea5e9;">GitHub →</a></p>` : ''}
+                    <button class="btn btn-danger" style="margin-top:10px;" onclick="deleteProject(${p.id})">Remover</button>
+                </div>`).join('');
+        } catch { document.getElementById('projects-list').innerHTML = '<p style="color:#f87171;">Erro ao carregar projetos.</p>'; }
+    }
+
+    async function addProject() {
+        const title = document.getElementById('proj-title').value.trim();
+        if (!title) { alert('Título é obrigatório'); return; }
+        await fetch(`${API}/api/projects`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-csrf-token': CSRF },
+            body: JSON.stringify({
+                title,
+                description: document.getElementById('proj-desc').value,
+                tech_stack: document.getElementById('proj-tech').value,
+                github_url: document.getElementById('proj-url').value
+            })
+        });
+        ['proj-title','proj-desc','proj-tech','proj-url'].forEach(id => document.getElementById(id).value = '');
+        loadProjects();
+    }
+
+    async function deleteProject(id) {
+        if (!confirm('Remover projeto?')) return;
+        await fetch(`${API}/api/projects/${id}`, { method: 'DELETE', headers: { 'x-csrf-token': CSRF } });
+        document.getElementById(`proj-${id}`)?.remove();
+    }
+
+    async function loadSkills() {
+        try {
+            const res = await fetch(`${API}/api/skills`);
+            const skills = await res.json();
+            const levels = { 'Básico': 33, 'Intermediário': 66, 'Avançado': 100 };
+            const byCategory = skills.reduce((acc, s) => {
+                (acc[s.category] = acc[s.category] || []).push(s); return acc;
+            }, {});
+            document.getElementById('skills-list').innerHTML = Object.entries(byCategory).map(([cat, items]) => `
+                <div class="card">
+                    <h3 style="margin-bottom:16px;">${cat}</h3>
+                    ${items.map(s => `
+                        <div class="skill-bar">
+                            <label><span>${s.name}</span><span style="color:#64748b;">${s.level}</span></label>
+                            <div class="bar"><div class="bar-fill" style="width:${levels[s.level] || 33}%"></div></div>
+                        </div>`).join('')}
+                </div>`).join('');
+        } catch { document.getElementById('skills-list').innerHTML = '<p style="color:#f87171;">Erro ao carregar habilidades.</p>'; }
+    }
+
+    async function checkHealth() {
+        document.getElementById('health-result').innerHTML = '<p style="color:#64748b;">Verificando...</p>';
+        try {
+            const res = await fetch(`${API}/health`);
+            const data = await res.json();
+            const ok = data.status === 'healthy';
+            document.getElementById('health-result').innerHTML = `
+                <p class="${ok ? 'status-ok' : 'status-err'}" style="font-size:1.2rem;margin-bottom:12px;">
+                    ${ok ? '✅ Sistema Saudável' : '❌ Sistema com Problemas'}
+                </p>
+                <div class="info-grid">
+                    <div class="info-item"><span>Status</span><strong>${data.status}</strong></div>
+                    <div class="info-item"><span>Database</span><strong>${data.database}</strong></div>
+                    <div class="info-item"><span>Instância</span><strong>${data.instance}</strong></div>
+                    <div class="info-item"><span>Região</span><strong>${data.region}</strong></div>
+                    <div class="info-item" style="grid-column:1/-1"><span>Timestamp</span><strong>${data.timestamp}</strong></div>
+                </div>`;
+        } catch (e) {
+            document.getElementById('health-result').innerHTML =
+                `<p class="status-err">❌ Erro: ${e.message}</p>`;
+        }
+    }
+</script>
+</body>
+</html>

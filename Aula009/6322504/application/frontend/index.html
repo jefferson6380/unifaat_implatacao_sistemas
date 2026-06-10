@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luan Teixeira - Portfólio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; }
+        header { background: #161b22; padding: 60px 20px; text-align: center; border-bottom: 1px solid #30363d; }
+        header h1 { font-size: 2.5rem; color: #58a6ff; }
+        header p { margin-top: 10px; font-size: 1.1rem; color: #8b949e; }
+        .badge { display: inline-block; background: #21262d; border: 1px solid #30363d; border-radius: 20px; padding: 4px 12px; margin: 4px; font-size: 0.85rem; }
+        section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        h2 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 20px; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+        .card h3 { color: #e6edf3; margin-bottom: 8px; }
+        .card p { color: #8b949e; font-size: 0.9rem; }
+        .tech { font-size: 0.8rem; color: #58a6ff; margin-top: 8px; }
+        .status-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; }
+        .status-ok { color: #3fb950; }
+        .status-err { color: #f85149; }
+        button { background: #238636; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 6px; font-size: 0.9rem; }
+        button:hover { background: #2ea043; }
+        .btn-red { background: #da3633; }
+        .btn-red:hover { background: #f85149; }
+        input, textarea { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 8px 12px; color: #c9d1d9; width: 100%; margin-bottom: 10px; }
+        label { font-size: 0.85rem; color: #8b949e; display: block; margin-bottom: 4px; }
+        .infra { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media(max-width:600px){ .infra { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Luan Teixeira</h1>
+    <p>Análise e Desenvolvimento de Sistemas - UniFAAT | RA: 6322504</p>
+    <div style="margin-top: 16px;">
+        <span class="badge">AWS EC2</span>
+        <span class="badge">Docker</span>
+        <span class="badge">Node.js</span>
+        <span class="badge">MySQL</span>
+        <span class="badge">Linux</span>
+        <span class="badge">VPC</span>
+    </div>
+</header>
+
+<section>
+    <h2>Status do Sistema</h2>
+    <div class="status-box">
+        <button onclick="checkHealth()">Verificar Health</button>
+        <button onclick="getInfo()">Info da Instância</button>
+        <div id="status-result" style="margin-top:16px;"></div>
+    </div>
+</section>
+
+<section>
+    <h2>Infraestrutura AWS</h2>
+    <div class="infra">
+        <div class="card">
+            <h3>VPC Customizada</h3>
+            <p>CIDR: 10.0.0.0/16<br>Região: us-east-1</p>
+            <div class="tech">Subnet Pública: 10.0.1.0/24 | Subnet Privada: 10.0.2.0/24</div>
+        </div>
+        <div class="card">
+            <h3>Security Groups</h3>
+            <p>Web Server: portas 22, 80, 443, 3000<br>Database: MySQL apenas do Web SG</p>
+            <div class="tech">Princípio do menor privilégio aplicado</div>
+        </div>
+        <div class="card">
+            <h3>Web Server</h3>
+            <p>Instância EC2 t3.micro<br>Subnet pública com IP público</p>
+            <div class="tech">Amazon Linux 2 | Docker + Nginx</div>
+        </div>
+        <div class="card">
+            <h3>Database Server</h3>
+            <p>Instância EC2 t3.micro<br>Subnet privada sem acesso direto</p>
+            <div class="tech">MySQL | Acesso restrito ao Web Server</div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Projetos</h2>
+    <div class="card" style="margin-bottom:20px;">
+        <h3 style="margin-bottom:12px;">Adicionar Projeto</h3>
+        <label>Título</label>
+        <input type="text" id="proj-title" placeholder="Nome do projeto">
+        <label>Descrição</label>
+        <textarea id="proj-desc" rows="2" placeholder="Descreva o projeto"></textarea>
+        <label>Tecnologias</label>
+        <input type="text" id="proj-tech" placeholder="Node.js, MySQL, Docker...">
+        <label>GitHub URL</label>
+        <input type="text" id="proj-url" placeholder="https://github.com/...">
+        <button onclick="addProject()">Adicionar</button>
+    </div>
+    <div id="projects-list"></div>
+</section>
+
+<section>
+    <h2>Habilidades</h2>
+    <div id="skills-list"></div>
+</section>
+
+<script>
+async function checkHealth() {
+    try {
+        const r = await fetch('/health');
+        const d = await r.json();
+        document.getElementById('status-result').innerHTML =
+            `<p class="status-ok">✅ Status: ${d.status} | DB: ${d.database} | Servidor: ${d.server}<br>Timestamp: ${d.timestamp}</p>`;
+    } catch(e) {
+        document.getElementById('status-result').innerHTML = `<p class="status-err">❌ Erro: ${e.message}</p>`;
+    }
+}
+
+async function getInfo() {
+    try {
+        const r = await fetch('/api/info');
+        const d = await r.json();
+        document.getElementById('status-result').innerHTML =
+            `<p class="status-ok">📋 ${d.message}<br>Instance: ${d.instance} | Região: ${d.region}</p>`;
+    } catch(e) {
+        document.getElementById('status-result').innerHTML = `<p class="status-err">❌ Erro: ${e.message}</p>`;
+    }
+}
+
+async function loadProjects() {
+    try {
+        const r = await fetch('/api/projects');
+        const projects = await r.json();
+        const container = document.getElementById('projects-list');
+        if (!projects.length) { container.innerHTML = '<p style="color:#8b949e">Nenhum projeto ainda.</p>'; return; }
+        container.innerHTML = projects.map(p => `
+            <div class="card">
+                <h3>${p.title}</h3>
+                <p>${p.description}</p>
+                <div class="tech">${p.tech_stack}</div>
+                ${p.github_url ? `<a href="${p.github_url}" style="color:#58a6ff;font-size:0.85rem;" target="_blank">GitHub →</a>` : ''}
+                <button class="btn-red" onclick="deleteProject(${p.id})" style="float:right;padding:4px 10px;font-size:0.8rem;">Remover</button>
+            </div>`).join('');
+    } catch(e) { console.error(e); }
+}
+
+async function addProject() {
+    const body = {
+        title: document.getElementById('proj-title').value,
+        description: document.getElementById('proj-desc').value,
+        tech_stack: document.getElementById('proj-tech').value,
+        github_url: document.getElementById('proj-url').value
+    };
+    if (!body.title) { alert('Título obrigatório'); return; }
+    await fetch('/api/projects', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    ['proj-title','proj-desc','proj-tech','proj-url'].forEach(id => document.getElementById(id).value = '');
+    loadProjects();
+}
+
+async function deleteProject(id) {
+    await fetch(`/api/projects/${id}`, { method: 'DELETE' });
+    loadProjects();
+}
+
+async function loadSkills() {
+    try {
+        const r = await fetch('/api/skills');
+        const skills = await r.json();
+        const container = document.getElementById('skills-list');
+        if (!skills.length) { container.innerHTML = '<p style="color:#8b949e">Nenhuma habilidade cadastrada.</p>'; return; }
+        const byCategory = skills.reduce((acc, s) => { (acc[s.category] = acc[s.category]||[]).push(s); return acc; }, {});
+        container.innerHTML = Object.entries(byCategory).map(([cat, items]) =>
+            `<div class="card"><h3>${cat}</h3><div style="margin-top:8px;">${items.map(s => `<span class="badge">${s.name}</span>`).join('')}</div></div>`
+        ).join('');
+    } catch(e) { console.error(e); }
+}
+
+loadProjects();
+loadSkills();
+</script>
+</body>
+</html>

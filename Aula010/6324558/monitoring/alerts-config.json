@@ -1,0 +1,33 @@
+{
+    "MetricAlarms": [
+        {
+            "AlarmName": "RDS-High-CPU-6324558",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:600627346835:alarm:RDS-High-CPU-6324558",
+            "AlarmDescription": "Alerta de seguranca para uso de CPU",
+            "AlarmConfigurationUpdatedTimestamp": "2026-05-14T23:39:31.021000-03:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [],
+            "InsufficientDataActions": [],
+            "StateValue": "INSUFFICIENT_DATA",
+            "StateReason": "Unchecked: Initial alarm creation",
+            "StateUpdatedTimestamp": "2026-05-14T23:39:31.021000-03:00",
+            "MetricName": "CPUUtilization",
+            "Namespace": "AWS/RDS",
+            "Statistic": "Average",
+            "Dimensions": [
+                {
+                    "Name": "DBInstanceIdentifier",
+                    "Value": "unifaat-db-6324558"
+                }
+            ],
+            "Period": 300,
+            "Unit": "Percent",
+            "EvaluationPeriods": 1,
+            "Threshold": 80.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "StateTransitionedTimestamp": "2026-05-14T23:39:31.021000-03:00"
+        }
+    ],
+    "CompositeAlarms": []
+}

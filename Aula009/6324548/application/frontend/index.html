@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f9; }
+        header { background: #333; color: #fff; padding: 10px 20px; text-align: center; }
+        section { margin: 20px 0; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .project { border-bottom: 1px solid #ccc; padding: 10px 0; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Portfólio Pessoal</h1>
+    <p>Desenvolvedor Cloud & Software</p>
+</header>
+
+<section id="health-status">
+    <h2>Status da API</h2>
+    <p id="api-status">Verificando...</p>
+</section>
+
+<section id="projects">
+    <h2>Meus Projetos</h2>
+    <div id="project-list">Carregando projetos...</div>
+</section>
+
+<script>
+    // Configura a URL base para se adequar ao ambiente
+    const API_URL = window.location.origin.replace('8080', '3000'); 
+
+    // Health Check
+    fetch(`${API_URL}/health`)
+        .then(res => res.json())
+        .then(data => {
+            const statusEl = document.getElementById('api-status');
+            statusEl.innerHTML = `<span class="success">Online (Status: ${data.status})</span>`;
+        })
+        .catch(err => {
+            document.getElementById('api-status').innerHTML = '<span class="error">Offline (Verifique o backend)</span>';
+        });
+
+    // Load Projects
+    fetch(`${API_URL}/api/projects`)
+        .then(res => res.json())
+        .then(projects => {
+            const list = document.getElementById('project-list');
+            list.innerHTML = '';
+            projects.forEach(p => {
+                list.innerHTML += `<div class="project"><h3>${p.title}</h3><p>${p.description}</p></div>`;
+            });
+        })
+        .catch(err => {
+            document.getElementById('project-list').innerHTML = '<p class="error">Erro ao carregar projetos.</p>';
+        });
+</script>
+
+</body>
+</html>

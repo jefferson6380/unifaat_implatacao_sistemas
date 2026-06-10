@@ -1,0 +1,21 @@
+# Chaves SSH - NUNCA commitar
+*.pem
+*.key
+infrastructure/portfolio-key.pem
+infrastructure/infrastructure-ids.env
+
+# Variáveis de ambiente reais
+.env
+!.env.example
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Banco de dados local
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projetos de Luiz Felipe Souza - Desenvolvedor ADS UniFAAT">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <title>Projetos | Luiz Felipe Souza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">LF<span>.</span>dev</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="projetos.html" class="active">Projetos</a></li>
+      <li><a href="experiencia.html">Experiência</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section>
+    <h2>Meus Projetos</h2>
+    <p style="margin-bottom:2rem;">Trabalhos desenvolvidos durante a graduação e estudos pessoais.</p>
+
+    <div class="grid-2">
+
+      <div class="card project-card">
+        <h3>Portfólio na AWS (este projeto)</h3>
+        <p>
+          Site estático hospedado no S3 com CloudFront CDN, HTTPS obrigatório,
+          Lambda para formulário de contato (API Gateway + DynamoDB + SES) e
+          pipeline de processamento de imagens via S3 trigger.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">Amazon S3</span>
+          <span class="tag tag-green">CloudFront</span>
+          <span class="tag tag-blue">Lambda</span>
+          <span class="tag tag-orange">DynamoDB</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Felipwz/ImplementacaoTF01" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <h3>Proxy Reverso e Load Balancer</h3>
+        <p>
+          Plataforma e-commerce com Nginx como proxy reverso e balanceador de
+          carga (least_conn). Três instâncias Flask, health checks, SSL/TLS
+          com certificado self-signed, rate limiting e compressão Gzip.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Nginx</span>
+          <span class="tag tag-purple">Python / Flask</span>
+          <span class="tag">Docker</span>
+          <span class="tag">SSL/TLS</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Felipwz/tf04_ProxyReverso_LoadBalancer" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <h3>Big Data — Saúde Mental em TI</h3>
+        <p>
+          Pipeline ETL completo com arquitetura Data Lake em três camadas
+          (Bronze → Silver → Gold). ~1.200 registros, 27 colunas, orquestrado
+          por Apache Airflow, armazenado no MinIO (Parquet) e visualizado
+          no Metabase.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-purple">Python</span>
+          <span class="tag">Apache Airflow</span>
+          <span class="tag">MinIO / S3</span>
+          <span class="tag">Docker</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Felipwz/Projeto_bigData" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <h3>Sistema de Gerenciamento Escolar</h3>
+        <p>
+          CRUD completo de alunos e professores com React 18 + TypeScript no
+          frontend e Node.js + Express + PostgreSQL no backend. Comunicação
+          em tempo real via WebSocket (Socket.IO) e deploy containerizado
+          com Docker + Nginx.
+        </p>
+        <div class="project-tags">
+          <span class="tag tag-blue">React / TypeScript</span>
+          <span class="tag tag-green">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">WebSocket</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Felipwz/Projeto_Frontend" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Upload de imagem para projetos -->
+  <section>
+    <h2>Enviar Imagem de Projeto</h2>
+    <p style="margin-bottom:1.5rem;">
+      Faça upload de prints ou imagens dos seus projetos. As imagens são
+      processadas automaticamente e otimizadas via Lambda.
+    </p>
+    <div class="card" style="max-width:500px;">
+      <div class="upload-area" id="uploadArea">
+        <p style="font-size:2rem;margin-bottom:0.5rem;">📁</p>
+        <p style="color:var(--text);">Arraste uma imagem aqui</p>
+        <p style="font-size:0.85rem;margin-top:0.3rem;">ou</p>
+        <input type="file" id="fileInput" accept="image/*" style="display:none;">
+        <button class="btn btn-outline" style="margin-top:0.8rem;" onclick="document.getElementById('fileInput').click()">
+          Selecionar arquivo
+        </button>
+      </div>
+      <div id="uploadFeedback" class="form-feedback" style="margin-top:1rem;"></div>
+      <div id="uploadPreview" style="margin-top:1rem;display:none;">
+        <img id="previewImg" style="border-radius:var(--radius);max-height:200px;width:100%;object-fit:cover;" alt="Preview" loading="lazy">
+        <button class="btn btn-primary" style="margin-top:0.8rem;width:100%;" id="uploadBtn">
+          Fazer Upload
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Luiz Felipe Souza · Feito com HTML, CSS e AWS ☁️</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

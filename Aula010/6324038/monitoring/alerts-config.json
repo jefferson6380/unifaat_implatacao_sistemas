@@ -1,0 +1,40 @@
+{
+  "alarms": [
+    {
+      "AlarmName": "Northwind-RDS-HighCPU",
+      "AlarmDescription": "CPU acima de 80% por 5 minutos",
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/RDS",
+      "Dimensions": [{"Name": "DBInstanceIdentifier", "Value": "northwind-rds"}],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "Statistic": "Average"
+    },
+    {
+      "AlarmName": "Northwind-RDS-LowStorage",
+      "AlarmDescription": "Storage livre abaixo de 2GB",
+      "MetricName": "FreeStorageSpace",
+      "Namespace": "AWS/RDS",
+      "Dimensions": [{"Name": "DBInstanceIdentifier", "Value": "northwind-rds"}],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 2147483648,
+      "ComparisonOperator": "LessThanThreshold",
+      "Statistic": "Minimum"
+    },
+    {
+      "AlarmName": "Northwind-RDS-HighConnections",
+      "AlarmDescription": "Conexões acima de 80 (limite db.t3.micro ~100)",
+      "MetricName": "DatabaseConnections",
+      "Namespace": "AWS/RDS",
+      "Dimensions": [{"Name": "DBInstanceIdentifier", "Value": "northwind-rds"}],
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 80,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "Statistic": "Maximum"
+    }
+  ]
+}

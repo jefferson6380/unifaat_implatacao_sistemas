@@ -1,0 +1,11 @@
+{
+  "name": "contact-form-lambda",
+  "version": "1.0.0",
+  "description": "Lambda para formulário de contato do portfólio — TF11",
+  "main": "index.js",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/client-ses": "^3.0.0"
+  }
+}

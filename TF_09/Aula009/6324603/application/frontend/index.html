@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allison Henrique | Portfólio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+
+    header {
+      background: linear-gradient(135deg, #1e3a5f, #0f172a);
+      padding: 60px 20px;
+      text-align: center;
+      border-bottom: 2px solid #334155;
+    }
+    header h1 { font-size: 2.5rem; color: #38bdf8; }
+    header p  { margin-top: 8px; color: #94a3b8; font-size: 1.1rem; }
+    .badge {
+      display: inline-block;
+      margin: 4px;
+      padding: 4px 12px;
+      background: #1e40af;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #bfdbfe;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px;
+      background: #1e293b;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #38bdf8; }
+
+    section { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    h2 { font-size: 1.6rem; color: #38bdf8; margin-bottom: 20px; border-left: 4px solid #38bdf8; padding-left: 12px; }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .card h3 { color: #f1f5f9; margin-bottom: 8px; }
+    .card p  { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+    .card .tag {
+      display: inline-block;
+      margin: 4px 4px 0 0;
+      padding: 2px 10px;
+      background: #0f3460;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: #7dd3fc;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .skill-item {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .skill-item span { display: block; font-size: 1.6rem; margin-bottom: 6px; }
+
+    /* Projetos CRUD */
+    .form-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .form-row input, .form-row textarea {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+    }
+    .form-row textarea { min-height: 60px; resize: vertical; }
+    button {
+      padding: 10px 20px;
+      background: #0369a1;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    button:hover { background: #0284c7; }
+    button.danger { background: #b91c1c; }
+    button.danger:hover { background: #dc2626; }
+
+    #projects-list .project-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    #projects-list .project-item .actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+    #health-status {
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .status-ok  { background: #14532d; color: #86efac; }
+    .status-err { background: #7f1d1d; color: #fca5a5; }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #475569;
+      border-top: 1px solid #1e293b;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Allison Henrique da Silva Oliveira</h1>
+  <p>Desenvolvedor de Software | Análise e Desenvolvimento de Sistemas - UniFAAT</p>
+  <div style="margin-top:16px">
+    <span class="badge">AWS</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">Docker</span>
+    <span class="badge">Python</span>
+    <span class="badge">SQL</span>
+    <span class="badge">Linux</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#sobre">Sobre</a>
+  <a href="#projetos">Projetos</a>
+  <a href="#habilidades">Habilidades</a>
+  <a href="#health">Health</a>
+</nav>
+
+<section id="sobre">
+  <h2>Sobre Mim</h2>
+  <div class="card">
+    <h3>Allison Henrique da Silva Oliveira</h3>
+    <p>
+      Estudante de Análise e Desenvolvimento de Sistemas na UniFAAT, com foco em
+      computação em nuvem, infraestrutura AWS e desenvolvimento de aplicações web.
+      Apaixonado por automação, segurança de redes e boas práticas de DevOps.
+    </p>
+    <p style="margin-top:10px">
+      📧 <strong>Email:</strong> allison@email.com &nbsp;|&nbsp;
+      🐙 <strong>GitHub:</strong> github.com/allison &nbsp;|&nbsp;
+      📍 <strong>Localização:</strong> Brasil
+    </p>
+  </div>
+</section>
+
+<section id="projetos">
+  <h2>Projetos</h2>
+
+  <div class="card" style="margin-bottom:24px">
+    <h3 style="margin-bottom:12px">Adicionar Projeto</h3>
+    <div class="form-row">
+      <input type="text" id="proj-name" placeholder="Nome do projeto" />
+      <input type="text" id="proj-tech" placeholder="Tecnologias (ex: Node.js, AWS)" />
+    </div>
+    <div class="form-row">
+      <textarea id="proj-desc" placeholder="Descrição do projeto"></textarea>
+    </div>
+    <button onclick="addProject()">Adicionar</button>
+  </div>
+
+  <div id="projects-list"></div>
+</section>
+
+<section id="habilidades">
+  <h2>Habilidades</h2>
+  <div class="skills-grid">
+    <div class="skill-item"><span>☁️</span>AWS EC2</div>
+    <div class="skill-item"><span>🔒</span>VPC / SG</div>
+    <div class="skill-item"><span>🐳</span>Docker</div>
+    <div class="skill-item"><span>🟢</span>Node.js</div>
+    <div class="skill-item"><span>🐍</span>Python</div>
+    <div class="skill-item"><span>🗄️</span>SQL</div>
+    <div class="skill-item"><span>🐧</span>Linux</div>
+    <div class="skill-item"><span>🔧</span>Git</div>
+    <div class="skill-item"><span>🌐</span>HTML/CSS</div>
+    <div class="skill-item"><span>⚡</span>JavaScript</div>
+  </div>
+</section>
+
+<section id="health">
+  <h2>Health Check</h2>
+  <div class="card">
+    <p style="margin-bottom:12px">Verifica o status da API backend.</p>
+    <button onclick="checkHealth()">Verificar Status</button>
+    <div id="health-status" style="margin-top:16px; display:none"></div>
+  </div>
+</section>
+
+<footer>
+  <p>TF09 - Allison Henrique da Silva Oliveira | RA: 6324603 | UniFAAT 2025</p>
+</footer>
+
+<script>
+  const API = '/api';
+
+  async function loadProjects() {
+    try {
+      const res = await fetch(`${API}/projects`);
+      const data = await res.json();
+      renderProjects(data);
+    } catch {
+      renderProjects([]);
+    }
+  }
+
+  function renderProjects(projects) {
+    const el = document.getElementById('projects-list');
+    if (!projects.length) {
+      el.innerHTML = '<div class="card"><p>Nenhum projeto cadastrado ainda.</p></div>';
+      return;
+    }
+    el.innerHTML = projects.map(p => `
+      <div class="card">
+        <div class="project-item">
+          <div>
+            <h3>${p.name}</h3>
+            <p>${p.description}</p>
+            <div style="margin-top:8px">
+              ${p.technologies.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('')}
+            </div>
+          </div>
+          <div class="actions">
+            <button class="danger" onclick="deleteProject(${p.id})">Remover</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function addProject() {
+    const name = document.getElementById('proj-name').value.trim();
+    const desc = document.getElementById('proj-desc').value.trim();
+    const tech = document.getElementById('proj-tech').value.trim();
+    if (!name || !desc) return alert('Preencha nome e descrição.');
+
+    await fetch(`${API}/projects`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, description: desc, technologies: tech })
+    });
+
+    document.getElementById('proj-name').value = '';
+    document.getElementById('proj-desc').value = '';
+    document.getElementById('proj-tech').value = '';
+    loadProjects();
+  }
+
+  async function deleteProject(id) {
+    await fetch(`${API}/projects/${id}`, { method: 'DELETE' });
+    loadProjects();
+  }
+
+  async function checkHealth() {
+    const el = document.getElementById('health-status');
+    el.style.display = 'inline-block';
+    try {
+      const res = await fetch(`${API}/health`);
+      const data = await res.json();
+      el.className = 'health-status status-ok';
+      el.textContent = `✅ API Online | Status: ${data.status} | Uptime: ${Math.floor(data.uptime)}s`;
+    } catch {
+      el.className = 'health-status status-err';
+      el.textContent = '❌ API Offline ou inacessível';
+    }
+  }
+
+  loadProjects();
+</script>
+</body>
+</html>

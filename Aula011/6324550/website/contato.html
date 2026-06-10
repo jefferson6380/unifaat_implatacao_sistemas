@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entre em contato com Bruno Pereira dos Santos" />
+  <title>Contato | Bruno Pereira dos Santos</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Bruno P. Santos</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="experiencia.html">Experiência</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Contato</h1>
+      <p>Vamos conversar! Estou disponível para oportunidades e projetos.</p>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Informações</h2>
+          <div class="info-item">
+            <span class="info-icon">🎓</span>
+            <div>
+              <strong>Estudante</strong>
+              <p>ADS – UniFAAT · RA 6324550</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Localização</strong>
+              <p>Atibaia, SP – Brasil</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">💼</span>
+            <div>
+              <strong>GitHub</strong>
+              <p><a href="https://github.com/" target="_blank" rel="noopener">github.com/brunopereira</a></p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">🔗</span>
+            <div>
+              <strong>LinkedIn</strong>
+              <p><a href="https://linkedin.com/" target="_blank" rel="noopener">linkedin.com/in/brunopereira</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <h2>Enviar Mensagem</h2>
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Nome *</label>
+              <input type="text" id="name" name="name" required placeholder="Seu nome completo" />
+              <span class="error-msg" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+              <span class="error-msg" id="emailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="subject">Assunto *</label>
+              <input type="text" id="subject" name="subject" required placeholder="Assunto da mensagem" />
+              <span class="error-msg" id="subjectError"></span>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem *</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Escreva sua mensagem..."></textarea>
+              <span class="error-msg" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <span id="btnText">Enviar Mensagem</span>
+              <span id="btnLoader" class="loader" hidden></span>
+            </button>
+            <div id="formFeedback" class="form-feedback" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bruno Pereira dos Santos · RA 6324550 · UniFAAT ADS</p>
+    <div class="social-links">
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

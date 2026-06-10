@@ -1,0 +1,13 @@
+# Chaves SSH - NUNCA commitar
+*.pem
+*.key
+
+# Estado da infraestrutura (contém IDs e IPs)
+.env.infrastructure
+
+# Variáveis de ambiente com credenciais
+.env
+!.env.example
+
+# Node.js
+node_modules/

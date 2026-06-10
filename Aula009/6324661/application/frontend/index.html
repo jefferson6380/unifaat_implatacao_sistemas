@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniele fagundes Rosa | Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #232f3e; /* Cor principal (ex: AWS Dark) */
+            --accent-color: #ff9900;  /* Cor de destaque (ex: AWS Orange) */
+            --bg-color: #f0f2f5;
+            --text-dark: #333;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: var(--bg-color); 
+            color: var(--text-dark);
+            margin: 0; 
+            line-height: 1.6;
+        }
+
+        .header { 
+            background: var(--primary-color); 
+            color: white; 
+            padding: 3rem 1rem; 
+            text-align: center; 
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+
+        .card { 
+            background: white; 
+            border-radius: 8px; 
+            padding: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+        }
+
+        .tech-tag { 
+            background: var(--accent-color); 
+            color: white; 
+            padding: 0.3rem 0.6rem; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            display: inline-block;
+            margin: 0.2rem;
+        }
+
+        .status-indicator { 
+            font-weight: bold; 
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        hr { border: 0; border-top: 1px solid #eee; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Daniele Fagudes Rosa</h1>
+        <p>Analista de Marketing / Propaganda</p>
+    </header>
+
+    <main class="container">
+        <!-- Sobre / Habilidades -->
+        <section class="card">
+            <h2>Habilidades Técnicas</h2>
+            <div id="skills-container">
+                <!-- Espaço para listar habilidades -->
+                <p><em>Facilidade com midias sociais.</br> Uso do Canva. </br>Fotografia e edição de video.</em></p>
+            </div>
+        </section>
+
+        <!-- Projetos Dinâmicos -->
+        <section class="card">
+            <h2>Projetos</h2>
+            <div id="projects-list">
+                <p>Carregando projetos do repositório...</p>
+            </div>
+        </section>
+
+        <!-- Status do Sistema/API -->
+        <section class="card">
+            <h3>Status da Infraestrutura</h3>
+            <p>Serviço API: <span id="api-status" class="status-indicator">Verificando...</span></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 - Desenvolvido por [Seu Nome]</p>
+    </footer>
+
+    <script>
+        // Configurações do Template
+        const CONFIG = {
+            API_HEALTH_URL: '/health', // URL para verificar status
+            API_PROJECTS_URL: '/api/projects' // URL para buscar projetos
+        };
+
+        async function initPortfolio() {
+            const statusEl = document.getElementById('api-status');
+            const projectsEl = document.getElementById('projects-list');
+
+            try {
+                // 1. Verificação de Health Check
+                const healthResponse = await fetch(CONFIG.API_HEALTH_URL);
+                const healthData = await healthResponse.json();
+                
+                statusEl.innerText = healthData.status || 'Online';
+                statusEl.style.color = '#2ecc71'; // Verde
+
+                // 2. Carregamento de Projetos
+                const projectsResponse = await fetch(CONFIG.API_PROJECTS_URL);
+                const projects = await projectsResponse.json();
+
+                if (projects.length > 0) {
+                    projectsEl.innerHTML = projects.map(p => `
+                        <div class="project-item">
+                            <strong>${p.title || 'Projeto Sem Título'}</strong> 
+                            <span class="tech-tag">${p.tech || 'Tech'}</span>
+                            <p>${p.description || ''}</p>
+                        </div>
+                    `).join('<hr>');
+                } else {
+                    projectsEl.innerText = 'Nenhum projeto encontrado.';
+                }
+
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                statusEl.innerText = 'Offline / Erro de Conexão';
+                statusEl.style.color = '#e74c3c'; // Vermelho
+                projectsEl.innerText = 'Não foi possível carregar os projetos no momento.';
+            }
+        }
+
+        // Inicia a execução
+        initPortfolio();
+    </script>
+</body>
+</html>

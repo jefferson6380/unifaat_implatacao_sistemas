@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitor Pinheiro Guimaraes | Portfólio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Vitor Pinheiro Guimaraes</h1>
+      <p class="subtitle">Estudante de Análise e Desenvolvimento de Sistemas · UniFAAT</p>
+      <p class="ra">RA: 6324680</p>
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">AWS</span>
+        <span class="badge">Docker</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Health -->
+    <section id="status">
+      <div class="status-bar">
+        <span class="dot green"></span>
+        <span id="status-text">Verificando servidor...</span>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Habilidades</h2>
+      <div class="skills-grid" id="skills-grid">
+        <p class="loading">Carregando...</p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projetos</h2>
+
+      <form id="project-form">
+        <div class="form-row">
+          <input type="text" id="proj-name" placeholder="Nome do projeto *" required />
+          <input type="text" id="proj-tech" placeholder="Stack (ex: Python, Flask)" />
+        </div>
+        <div class="form-row">
+          <input type="text" id="proj-desc" placeholder="Descrição" />
+          <input type="url" id="proj-url" placeholder="URL do repositório" />
+        </div>
+        <button type="submit">+ Adicionar Projeto</button>
+      </form>
+
+      <div class="projects-grid" id="projects-grid">
+        <p class="loading">Carregando projetos...</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Vitor Pinheiro Guimaraes · RA 6324680 · UniFAAT 2026.1</p>
+    <p>Hospedado em <strong>AWS EC2</strong> · us-east-1</p>
+  </footer>
+
+  <script>
+    const API = '';
+
+    async function checkHealth() {
+      try {
+        const res = await fetch(`${API}/health`);
+        const data = await res.json();
+        document.getElementById('status-text').textContent =
+          `Servidor online — ${data.aluno} (RA: ${data.ra})`;
+      } catch {
+        document.getElementById('status-text').textContent = 'Servidor offline';
+        document.querySelector('.dot').classList.replace('green', 'red');
+      }
+    }
+
+    async function loadSkills() {
+      const res = await fetch(`${API}/api/skills`);
+      const skills = await res.json();
+      const grid = document.getElementById('skills-grid');
+      const categories = [...new Set(skills.map(s => s.category))];
+      grid.innerHTML = categories.map(cat => `
+        <div class="skill-category">
+          <h3>${cat}</h3>
+          ${skills.filter(s => s.category === cat).map(s => `
+            <div class="skill-item">
+              <span>${s.name}</span>
+              <span class="level">${s.level}</span>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+    }
+
+    async function loadProjects() {
+      const res = await fetch(`${API}/api/projects`);
+      const projects = await res.json();
+      const grid = document.getElementById('projects-grid');
+      if (projects.length === 0) {
+        grid.innerHTML = '<p class="empty">Nenhum projeto ainda. Adicione um acima!</p>';
+        return;
+      }
+      grid.innerHTML = projects.map(p => `
+        <div class="project-card" data-id="${p.id}">
+          <div class="project-header">
+            <h3>${p.name}</h3>
+            <button class="btn-delete" onclick="deleteProject(${p.id})">×</button>
+          </div>
+          <p>${p.description || ''}</p>
+          ${p.tech_stack ? `<p class="tech"><strong>Stack:</strong> ${p.tech_stack}</p>` : ''}
+          ${p.repo_url ? `<a href="${p.repo_url}" target="_blank">Ver repositório →</a>` : ''}
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('project-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const body = {
+        name: document.getElementById('proj-name').value,
+        description: document.getElementById('proj-desc').value,
+        tech_stack: document.getElementById('proj-tech').value,
+        repo_url: document.getElementById('proj-url').value,
+      };
+      await fetch(`${API}/api/projects`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      e.target.reset();
+      loadProjects();
+    });
+
+    async function deleteProject(id) {
+      if (!confirm('Remover este projeto?')) return;
+      await fetch(`${API}/api/projects/${id}`, { method: 'DELETE' });
+      loadProjects();
+    }
+
+    checkHealth();
+    loadSkills();
+    loadProjects();
+  </script>
+</body>
+</html>
