@@ -1,0 +1,182 @@
+(function () {
+  const config = window.TF11_CONFIG || {};
+  const filePath = location.pathname.split("/").pop() || "index.html";
+
+  function setYear() {
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  }
+
+  function setupNav() {
+    const nav = document.getElementById("menu");
+    const toggle = document.getElementById("navToggle");
+
+    if (toggle && nav) {
+      toggle.addEventListener("click", function () {
+        const opened = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(opened));
+      });
+    }
+
+    document.querySelectorAll(".site-nav a[data-page]").forEach(function (link) {
+      if (link.getAttribute("data-page") === filePath) {
+        link.classList.add("is-active");
+      }
+    });
+  }
+
+  function setupReveal() {
+    const revealItems = document.querySelectorAll("[data-reveal]");
+    if (!revealItems.length) return;
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    revealItems.forEach(function (item) {
+      observer.observe(item);
+    });
+  }
+
+  function setStatus(el, text, type) {
+    if (!el) return;
+    el.textContent = text;
+    el.classList.remove("ok", "warn", "error");
+    if (type) el.classList.add(type);
+  }
+
+  function createGalleryCard(url, title) {
+    const wrapper = document.createElement("article");
+    wrapper.className = "project-card";
+
+    const img = document.createElement("img");
+    img.src = url;
+    img.loading = "lazy";
+    img.alt = title || "Imagem enviada";
+
+    const box = document.createElement("div");
+    const h3 = document.createElement("h3");
+    h3.textContent = title || "Novo item";
+    const p = document.createElement("p");
+    p.textContent = "Asset carregado para galeria dinamica.";
+
+    box.appendChild(h3);
+    box.appendChild(p);
+    wrapper.appendChild(img);
+    wrapper.appendChild(box);
+    return wrapper;
+  }
+
+  async function loadDynamicGallery() {
+    const container = document.getElementById("dynamicGallery");
+    if (!container) return;
+
+    if (!config.GALLERY_API_URL) {
+      container.innerHTML = "";
+      return;
+    }
+
+    try {
+      const response = await fetch(config.GALLERY_API_URL, { method: "GET" });
+      if (!response.ok) throw new Error("Falha ao consultar galeria");
+      const payload = await response.json();
+      const items = Array.isArray(payload.items) ? payload.items : [];
+      container.innerHTML = "";
+      items.forEach(function (item) {
+        const card = createGalleryCard(item.url, item.title || "Projeto");
+        container.appendChild(card);
+      });
+    } catch (error) {
+      container.innerHTML = "";
+      const info = document.createElement("p");
+      info.className = "status warn";
+      info.textContent = "Galeria dinamica indisponivel no momento.";
+      container.appendChild(info);
+    }
+  }
+
+  async function uploadWithApi(file) {
+    const initResp = await fetch(config.UPLOAD_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fileName: file.name, contentType: file.type })
+    });
+
+    if (!initResp.ok) throw new Error("API de upload nao respondeu corretamente");
+
+    const initData = await initResp.json();
+    if (!initData.presignedUrl) throw new Error("URL assinada ausente");
+
+    const putResp = await fetch(initData.presignedUrl, {
+      method: "PUT",
+      headers: { "Content-Type": file.type },
+      body: file
+    });
+
+    if (!putResp.ok) throw new Error("Falha ao enviar arquivo para S3");
+    return initData.fileUrl || "";
+  }
+
+  function setupUpload() {
+    const input = document.getElementById("projectImage");
+    const button = document.getElementById("uploadButton");
+    const status = document.getElementById("uploadStatus");
+    const gallery = document.getElementById("dynamicGallery");
+
+    if (!input || !button || !status || !gallery) return;
+
+    button.addEventListener("click", async function () {
+      const file = input.files && input.files[0];
+      if (!file) {
+        setStatus(status, "Selecione um arquivo antes de enviar.", "warn");
+        return;
+      }
+
+      const allowed = ["image/webp", "image/jpeg", "image/png"];
+      if (!allowed.includes(file.type)) {
+        setStatus(status, "Tipo de arquivo invalido. Use webp, jpg ou png.", "error");
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        setStatus(status, "Arquivo acima de 5 MB.", "error");
+        return;
+      }
+
+      setStatus(status, "Enviando arquivo...", "warn");
+
+      try {
+        let finalUrl = "";
+
+        if (config.UPLOAD_API_URL) {
+          finalUrl = await uploadWithApi(file);
+        }
+
+        if (!finalUrl) {
+          finalUrl = URL.createObjectURL(file);
+        }
+
+        const card = createGalleryCard(finalUrl, file.name);
+        gallery.prepend(card);
+        setStatus(status, "Upload concluido com sucesso.", "ok");
+        input.value = "";
+      } catch (error) {
+        setStatus(status, "Falha no upload: " + error.message, "error");
+      }
+    });
+  }
+
+  setYear();
+  setupNav();
+  setupReveal();
+  setupUpload();
+  loadDynamicGallery();
+})();

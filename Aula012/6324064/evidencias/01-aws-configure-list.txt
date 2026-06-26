@@ -1,0 +1,7 @@
+$ aws configure list
+NAME       : VALUE                    : TYPE             : LOCATION
+profile    : <not set>                : None             : None
+access_key : ****************J7U4     : shared-credentials-file : 
+secret_key : ****************3Ka2     : shared-credentials-file : 
+region     : us-east-1                : config-file      : ~/.aws/config
+

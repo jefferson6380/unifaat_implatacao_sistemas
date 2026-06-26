@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiencia | Riquelme Menezes</title>
+  <meta name="description" content="Timeline de experiencia academica e tecnica.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Ir para inicio">
+        <span class="brand-mark">RM</span>
+        <span class="brand-text">Riquelme Menezes</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="site-nav" id="menu">
+        <a href="index.html" data-page="index.html">Inicio</a>
+        <a href="projetos.html" data-page="projetos.html">Projetos</a>
+        <a href="experiencia.html" data-page="experiencia.html">Experiencia</a>
+        <a href="contato.html" data-page="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-main">
+    <section class="panel" data-reveal>
+      <p class="eyebrow">Trajetoria</p>
+      <h1>Experiencia academica e tecnica</h1>
+      <p class="lead">Evolucao focada em infraestrutura cloud, desenvolvimento web e boas praticas operacionais.</p>
+    </section>
+
+    <section class="panel" data-reveal>
+      <div class="timeline">
+        <article class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div>
+            <h2>2026 - Portfolio S3 e CloudFront</h2>
+            <p>Implementacao de website estatico com CDN, automacao de infraestrutura e documentacao tecnica de custos e seguranca.</p>
+            <ul>
+              <li>Provisionamento de buckets e distribuicao via AWS CLI</li>
+              <li>Upload de assets e formulario via arquitetura serverless</li>
+              <li>Checklist de seguranca e monitoramento operacional</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div>
+            <h2>2026 - Migracao para Amazon RDS</h2>
+            <p>Projeto de migracao de banco local para RDS com validacao de performance e plano de rollback.</p>
+            <ul>
+              <li>Scripts de migracao e validacao automatizada</li>
+              <li>Analise comparativa de latencia e throughput</li>
+              <li>Dashboards CloudWatch e alertas de custo</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div>
+            <h2>2025 - Fundamentos de Web e APIs</h2>
+            <p>Projetos praticos com HTML, CSS, JavaScript e APIs REST para consolidar base de desenvolvimento.</p>
+            <ul>
+              <li>Design responsivo e acessibilidade</li>
+              <li>Integracao frontend/backend</li>
+              <li>Versionamento com Git e fluxo por PR</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Riquelme Menezes</p>
+      <p>Linha do tempo profissional</p>
+    </div>
+  </footer>
+</body>
+</html>

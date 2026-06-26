@@ -1,0 +1,2 @@
+$ docker tag web-app-v1:v1.0 506609161223.dkr.ecr.us-east-1.amazonaws.com/web-app-repo-6324064:v1.0
+

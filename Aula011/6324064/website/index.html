@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Riquelme Menezes | Portfolio Cloud</title>
+  <meta name="description" content="Portfolio profissional hospedado em S3 com CloudFront, foco em implementacao de sistemas e cloud.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Riquelme Menezes | Portfolio Cloud">
+  <meta property="og:description" content="Projetos de implementacao de sistemas, cloud e automacao.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Ir para inicio">
+        <span class="brand-mark">RM</span>
+        <span class="brand-text">Riquelme Menezes</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="site-nav" id="menu">
+        <a href="index.html" data-page="index.html">Inicio</a>
+        <a href="projetos.html" data-page="projetos.html">Projetos</a>
+        <a href="experiencia.html" data-page="experiencia.html">Experiencia</a>
+        <a href="contato.html" data-page="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" data-reveal>
+      <p class="eyebrow">TF11 | S3 + CloudFront</p>
+      <h1>Construindo produtos digitais com foco em performance, seguranca e escala.</h1>
+      <p class="lead">Sou estudante de ADS na UniFAAT e este portfolio demonstra uma entrega cloud native com website estatico, CDN global e integracao serverless.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="projetos.html">Ver projetos</a>
+        <a class="btn btn-ghost" href="contato.html">Falar comigo</a>
+      </div>
+      <ul class="hero-metrics" aria-label="Metricas em destaque">
+        <li><strong>4</strong><span>paginas semanticas</span></li>
+        <li><strong>90+</strong><span>meta PageSpeed alvo</span></li>
+        <li><strong>100%</strong><span>trafego via HTTPS</span></li>
+      </ul>
+    </section>
+
+    <section class="container panel" data-reveal>
+      <h2>Diferenciais desta entrega</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Arquitetura escalavel</h3>
+          <p>Hospedagem em S3 com CloudFront para reduzir latencia e distribuir conteudo globalmente.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Seguranca aplicada</h3>
+          <p>Policies restritivas, CORS configuravel, versionamento e preparo para headers de seguranca.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Operacao eficiente</h3>
+          <p>Scripts de provisionamento e limpeza para reduzir custo residual e acelerar repetibilidade.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container panel" data-reveal>
+      <h2>Stack principal</h2>
+      <div class="chips">
+        <span>AWS S3</span>
+        <span>CloudFront</span>
+        <span>Lambda</span>
+        <span>API Gateway</span>
+        <span>DynamoDB</span>
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript ES6+</span>
+      </div>
+    </section>
+
+    <section class="container panel" data-reveal>
+      <h2>Projetos em destaque</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="images/project-01.webp" alt="Dashboard cloud" loading="lazy">
+          <div>
+            <h3>Dashboard de Custos AWS</h3>
+            <p>Painel para acompanhar consumo cloud com foco em previsibilidade financeira.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="images/project-02.webp" alt="Site portfolio" loading="lazy">
+          <div>
+            <h3>Portfolio Serverless</h3>
+            <p>Projeto estatico com APIs para formulario e upload de assets em fluxo desacoplado.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="images/project-03.webp" alt="Pipeline de deploy" loading="lazy">
+          <div>
+            <h3>Pipeline de Deploy</h3>
+            <p>Automacao de build e publicacao de website com invalidacao de cache no CloudFront.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Riquelme Menezes</p>
+      <p>UniFAAT ADS | Implementacao de Sistemas</p>
+    </div>
+  </footer>
+</body>
+</html>

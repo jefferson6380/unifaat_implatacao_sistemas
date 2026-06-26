@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contato | Riquelme Menezes</title>
+  <meta name="description" content="Formulario de contato integrado com API Gateway e Lambda.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.min.css">
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.min.js"></script>
+  <script defer src="js/contact.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Ir para inicio">
+        <span class="brand-mark">RM</span>
+        <span class="brand-text">Riquelme Menezes</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="site-nav" id="menu">
+        <a href="index.html" data-page="index.html">Inicio</a>
+        <a href="projetos.html" data-page="projetos.html">Projetos</a>
+        <a href="experiencia.html" data-page="experiencia.html">Experiencia</a>
+        <a href="contato.html" data-page="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-main">
+    <section class="panel" data-reveal>
+      <p class="eyebrow">Contato profissional</p>
+      <h1>Vamos conversar sobre projetos</h1>
+      <p class="lead">Este formulario pode integrar API Gateway + Lambda + DynamoDB para registrar mensagens.</p>
+    </section>
+
+    <section class="panel" data-reveal>
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="field-grid">
+          <label>
+            Nome
+            <input type="text" name="name" required maxlength="80" placeholder="Seu nome completo">
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required maxlength="120" placeholder="voce@dominio.com">
+          </label>
+        </div>
+
+        <label>
+          Assunto
+          <input type="text" name="subject" required maxlength="120" placeholder="Tema da mensagem">
+        </label>
+
+        <label>
+          Mensagem
+          <textarea name="message" required maxlength="1200" rows="7" placeholder="Descreva sua demanda"></textarea>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+        <p id="formStatus" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Riquelme Menezes</p>
+      <p>Retorno em ate 48 horas</p>
+    </div>
+  </footer>
+</body>
+</html>
